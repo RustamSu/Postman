@@ -96,7 +96,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{Autorization}}",
+						"value": "FhyYerbfMETUf7Cr3yB7ji_PleJNt4RmSqkILdIyijk.eyJpbnN0YW5jZUlkIjoiZjQ2Y2Q1MDItZjcyZi00NGY3LTk2MzgtNWRhMWRlYjBiNGU3IiwiYXBwRGVmSWQiOiIxNTA1Yjc3NS1lODg1LWViMWItYjY2NS0xZTQ4NWQ5YmY5MGUiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA4LTA4VDIxOjA3OjUwLjQyMFoiLCJ1aWQiOiJhYTM3NWM1OC0wYjAzLTQzZmYtYTZkYy00NzMxOTViOGNlYmEiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImY5MzE0NzFkLWRlNWItNDEzOC1iZTA3LTQ1YmFkYjNmNDQwYSIsImJpVG9rZW4iOiJkY2RiNDZkNC1hMzBiLTA0YWYtMTY3MS01ZmNiOTMwMDljYzgiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMS0wOC0wOVQwMTowNzo1MC40MjBaIiwiaGFzVXNlclJvbGUiOmZhbHNlfQ",
 						"type": "text"
 					}
 				],
@@ -182,7 +182,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{Autorization}}",
+						"value": "FhyYerbfMETUf7Cr3yB7ji_PleJNt4RmSqkILdIyijk.eyJpbnN0YW5jZUlkIjoiZjQ2Y2Q1MDItZjcyZi00NGY3LTk2MzgtNWRhMWRlYjBiNGU3IiwiYXBwRGVmSWQiOiIxNTA1Yjc3NS1lODg1LWViMWItYjY2NS0xZTQ4NWQ5YmY5MGUiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA4LTA4VDIxOjA3OjUwLjQyMFoiLCJ1aWQiOiJhYTM3NWM1OC0wYjAzLTQzZmYtYTZkYy00NzMxOTViOGNlYmEiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImY5MzE0NzFkLWRlNWItNDEzOC1iZTA3LTQ1YmFkYjNmNDQwYSIsImJpVG9rZW4iOiJkY2RiNDZkNC1hMzBiLTA0YWYtMTY3MS01ZmNiOTMwMDljYzgiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMS0wOC0wOVQwMTowNzo1MC40MjBaIiwiaGFzVXNlclJvbGUiOmZhbHNlfQ",
 						"type": "text"
 					}
 				],
@@ -286,7 +286,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{Autorization}}",
+						"value": "FhyYerbfMETUf7Cr3yB7ji_PleJNt4RmSqkILdIyijk.eyJpbnN0YW5jZUlkIjoiZjQ2Y2Q1MDItZjcyZi00NGY3LTk2MzgtNWRhMWRlYjBiNGU3IiwiYXBwRGVmSWQiOiIxNTA1Yjc3NS1lODg1LWViMWItYjY2NS0xZTQ4NWQ5YmY5MGUiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA4LTA4VDIxOjA3OjUwLjQyMFoiLCJ1aWQiOiJhYTM3NWM1OC0wYjAzLTQzZmYtYTZkYy00NzMxOTViOGNlYmEiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImY5MzE0NzFkLWRlNWItNDEzOC1iZTA3LTQ1YmFkYjNmNDQwYSIsImJpVG9rZW4iOiJkY2RiNDZkNC1hMzBiLTA0YWYtMTY3MS01ZmNiOTMwMDljYzgiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMS0wOC0wOVQwMTowNzo1MC40MjBaIiwiaGFzVXNlclJvbGUiOmZhbHNlfQ",
 						"type": "text"
 					}
 				],
@@ -378,7 +378,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{Autorization}}",
+						"value": "FhyYerbfMETUf7Cr3yB7ji_PleJNt4RmSqkILdIyijk.eyJpbnN0YW5jZUlkIjoiZjQ2Y2Q1MDItZjcyZi00NGY3LTk2MzgtNWRhMWRlYjBiNGU3IiwiYXBwRGVmSWQiOiIxNTA1Yjc3NS1lODg1LWViMWItYjY2NS0xZTQ4NWQ5YmY5MGUiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA4LTA4VDIxOjA3OjUwLjQyMFoiLCJ1aWQiOiJhYTM3NWM1OC0wYjAzLTQzZmYtYTZkYy00NzMxOTViOGNlYmEiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImY5MzE0NzFkLWRlNWItNDEzOC1iZTA3LTQ1YmFkYjNmNDQwYSIsImJpVG9rZW4iOiJkY2RiNDZkNC1hMzBiLTA0YWYtMTY3MS01ZmNiOTMwMDljYzgiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMS0wOC0wOVQwMTowNzo1MC40MjBaIiwiaGFzVXNlclJvbGUiOmZhbHNlfQ",
 						"type": "text"
 					}
 				],
@@ -466,6 +466,10 @@
 						"exec": [
 							"pm.environment.set(\"company\", \"Google-\" + new Date().getTime());\r",
 							"\r",
+							"zpCd = Math.floor(Math.random()*90000) + 10000\r",
+							"zpCd = zpCd.toString()\r",
+							"pm.environment.set(\"zipCode\", zpCd);\r",
+							"\r",
 							"pm.environment.set(\"firstName\", (pm.variables.replaceIn(\"{{$randomFirstName}}\")));\r",
 							"pm.environment.set(\"lastName\", (pm.variables.replaceIn(\"{{$randomLastName}}\")));\r",
 							"pm.environment.set(\"country\", (pm.variables.replaceIn(\"{{$randomCountry}}\")));\r",
@@ -487,13 +491,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{Autorization}}",
+						"value": "FhyYerbfMETUf7Cr3yB7ji_PleJNt4RmSqkILdIyijk.eyJpbnN0YW5jZUlkIjoiZjQ2Y2Q1MDItZjcyZi00NGY3LTk2MzgtNWRhMWRlYjBiNGU3IiwiYXBwRGVmSWQiOiIxNTA1Yjc3NS1lODg1LWViMWItYjY2NS0xZTQ4NWQ5YmY5MGUiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA4LTA4VDIxOjA3OjUwLjQyMFoiLCJ1aWQiOiJhYTM3NWM1OC0wYjAzLTQzZmYtYTZkYy00NzMxOTViOGNlYmEiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImY5MzE0NzFkLWRlNWItNDEzOC1iZTA3LTQ1YmFkYjNmNDQwYSIsImJpVG9rZW4iOiJkY2RiNDZkNC1hMzBiLTA0YWYtMTY3MS01ZmNiOTMwMDljYzgiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMS0wOC0wOVQwMTowNzo1MC40MjBaIiwiaGFzVXNlclJvbGUiOmZhbHNlfQ",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"address\": {\r\n        \"id\": \"{{id}}\",\r\n        \"fullName\": {\r\n            \"firstName\": \"{{firstName}}\",\r\n            \"lastName\": \"{{lastName}}\"\r\n        },\r\n        \"company\": \"{{company}}\",\r\n        \"taxInfo\": {\r\n            \"id\": null,\r\n            \"type\": null\r\n        },\r\n        \"addressLine1\": \"{{addressLine1}}\",\r\n        \"addressLine2\": \"{{addressLine2}}\",\r\n        \"street\": {\r\n            \"name\": null,\r\n            \"number\": null\r\n        },\r\n        \"city\": \"{{city}}\",\r\n        \"country\": \"{{country}}\",\r\n        \"subdivision\": \"{{subdivision}}\",\r\n        \"zipCode\": \"92648\",\r\n        \"phoneNumber\": \"{{phoneNumber}}\",\r\n        \"location\": {\r\n            \"latitude\": \"{{latitude}}\",\r\n            \"longitude\": \"{{longitude}}\"\r\n        }\r\n    },\r\n    \"setAsDefault\": false,\r\n    \"fieldMask\": {\r\n        \"paths\": [\r\n            \"fullName.firstName\",\r\n            \"fullName.lastName\",\r\n            \"company\",\r\n            \"addressLine1\",\r\n            \"addressLine2\",\r\n            \"city\",\r\n            \"country\",\r\n            \"subdivision\",\r\n            \"zipCode\",\r\n            \"phoneNumber\",\r\n            \"location.latitude\",\r\n            \"location.longitude\",\r\n            \"setAsDefault\"\r\n        ]\r\n    }\r\n}",
+					"raw": "{\r\n    \"address\": {\r\n        \"id\": \"{{id}}\",\r\n        \"fullName\": {\r\n            \"firstName\": \"{{firstName}}\",\r\n            \"lastName\": \"{{lastName}}\"\r\n        },\r\n        \"company\": \"{{company}}\",\r\n        \"taxInfo\": {\r\n            \"id\": null,\r\n            \"type\": null\r\n        },\r\n        \"addressLine1\": \"{{addressLine1}}\",\r\n        \"addressLine2\": \"{{addressLine2}}\",\r\n        \"street\": {\r\n            \"name\": null,\r\n            \"number\": null\r\n        },\r\n        \"city\": \"{{city}}\",\r\n        \"country\": \"{{country}}\",\r\n        \"subdivision\": \"{{subdivision}}\",\r\n        \"zipCode\": \"{{zipCode}}\",\r\n        \"phoneNumber\": \"{{phoneNumber}}\",\r\n        \"location\": {\r\n            \"latitude\": \"{{latitude}}\",\r\n            \"longitude\": \"{{longitude}}\"\r\n        }\r\n    },\r\n    \"setAsDefault\": false,\r\n    \"fieldMask\": {\r\n        \"paths\": [\r\n            \"fullName.firstName\",\r\n            \"fullName.lastName\",\r\n            \"company\",\r\n            \"addressLine1\",\r\n            \"addressLine2\",\r\n            \"city\",\r\n            \"country\",\r\n            \"subdivision\",\r\n            \"zipCode\",\r\n            \"phoneNumber\",\r\n            \"location.latitude\",\r\n            \"location.longitude\",\r\n            \"setAsDefault\"\r\n        ]\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -570,6 +574,8 @@
 							"    pm.expect(jsonData.address.id).to.eql(pm.environment.get('id'));\r",
 							"    pm.expect(jsonData.address.fullName.firstName).to.eql(pm.environment.get('firstName'));\r",
 							"    pm.expect(jsonData.address.fullName.lastName).to.eql(pm.environment.get('lastName'));\r",
+							"    pm.expect(jsonData.address.country).to.eql(pm.environment.get('country'));\r",
+							"    pm.expect(jsonData.address.zipCode).to.eql(pm.environment.get('zipCode'));\r",
 							"    pm.expect(jsonData.address.company).to.eql(pm.environment.get('company'));\r",
 							"});"
 						],
@@ -582,7 +588,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{Autorization}}",
+						"value": "FhyYerbfMETUf7Cr3yB7ji_PleJNt4RmSqkILdIyijk.eyJpbnN0YW5jZUlkIjoiZjQ2Y2Q1MDItZjcyZi00NGY3LTk2MzgtNWRhMWRlYjBiNGU3IiwiYXBwRGVmSWQiOiIxNTA1Yjc3NS1lODg1LWViMWItYjY2NS0xZTQ4NWQ5YmY5MGUiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA4LTA4VDIxOjA3OjUwLjQyMFoiLCJ1aWQiOiJhYTM3NWM1OC0wYjAzLTQzZmYtYTZkYy00NzMxOTViOGNlYmEiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImY5MzE0NzFkLWRlNWItNDEzOC1iZTA3LTQ1YmFkYjNmNDQwYSIsImJpVG9rZW4iOiJkY2RiNDZkNC1hMzBiLTA0YWYtMTY3MS01ZmNiOTMwMDljYzgiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMS0wOC0wOVQwMTowNzo1MC40MjBaIiwiaGFzVXNlclJvbGUiOmZhbHNlfQ",
 						"type": "text"
 					}
 				],
@@ -665,7 +671,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{Autorization}}",
+						"value": "FhyYerbfMETUf7Cr3yB7ji_PleJNt4RmSqkILdIyijk.eyJpbnN0YW5jZUlkIjoiZjQ2Y2Q1MDItZjcyZi00NGY3LTk2MzgtNWRhMWRlYjBiNGU3IiwiYXBwRGVmSWQiOiIxNTA1Yjc3NS1lODg1LWViMWItYjY2NS0xZTQ4NWQ5YmY5MGUiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA4LTA4VDIxOjA3OjUwLjQyMFoiLCJ1aWQiOiJhYTM3NWM1OC0wYjAzLTQzZmYtYTZkYy00NzMxOTViOGNlYmEiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImY5MzE0NzFkLWRlNWItNDEzOC1iZTA3LTQ1YmFkYjNmNDQwYSIsImJpVG9rZW4iOiJkY2RiNDZkNC1hMzBiLTA0YWYtMTY3MS01ZmNiOTMwMDljYzgiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMS0wOC0wOVQwMTowNzo1MC40MjBaIiwiaGFzVXNlclJvbGUiOmZhbHNlfQ",
 						"type": "text"
 					}
 				],
@@ -756,7 +762,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{Autorization}}",
+						"value": "FhyYerbfMETUf7Cr3yB7ji_PleJNt4RmSqkILdIyijk.eyJpbnN0YW5jZUlkIjoiZjQ2Y2Q1MDItZjcyZi00NGY3LTk2MzgtNWRhMWRlYjBiNGU3IiwiYXBwRGVmSWQiOiIxNTA1Yjc3NS1lODg1LWViMWItYjY2NS0xZTQ4NWQ5YmY5MGUiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA4LTA4VDIxOjA3OjUwLjQyMFoiLCJ1aWQiOiJhYTM3NWM1OC0wYjAzLTQzZmYtYTZkYy00NzMxOTViOGNlYmEiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImY5MzE0NzFkLWRlNWItNDEzOC1iZTA3LTQ1YmFkYjNmNDQwYSIsImJpVG9rZW4iOiJkY2RiNDZkNC1hMzBiLTA0YWYtMTY3MS01ZmNiOTMwMDljYzgiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMS0wOC0wOVQwMTowNzo1MC40MjBaIiwiaGFzVXNlclJvbGUiOmZhbHNlfQ",
 						"type": "text"
 					}
 				],
@@ -843,7 +849,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{Autorization}}",
+						"value": "FhyYerbfMETUf7Cr3yB7ji_PleJNt4RmSqkILdIyijk.eyJpbnN0YW5jZUlkIjoiZjQ2Y2Q1MDItZjcyZi00NGY3LTk2MzgtNWRhMWRlYjBiNGU3IiwiYXBwRGVmSWQiOiIxNTA1Yjc3NS1lODg1LWViMWItYjY2NS0xZTQ4NWQ5YmY5MGUiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA4LTA4VDIxOjA3OjUwLjQyMFoiLCJ1aWQiOiJhYTM3NWM1OC0wYjAzLTQzZmYtYTZkYy00NzMxOTViOGNlYmEiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImY5MzE0NzFkLWRlNWItNDEzOC1iZTA3LTQ1YmFkYjNmNDQwYSIsImJpVG9rZW4iOiJkY2RiNDZkNC1hMzBiLTA0YWYtMTY3MS01ZmNiOTMwMDljYzgiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMS0wOC0wOVQwMTowNzo1MC40MjBaIiwiaGFzVXNlclJvbGUiOmZhbHNlfQ",
 						"type": "text"
 					}
 				],
@@ -865,6 +871,41 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
