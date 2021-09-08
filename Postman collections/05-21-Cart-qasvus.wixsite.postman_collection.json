@@ -1,0 +1,924 @@
+{
+	"info": {
+		"_postman_id": "2a70cfa0-97ad-4454-bde1-c5f1b9132133",
+		"name": "05-21-Cart-qasvus.wixsite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Product 1 to cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (responseCode.code === 200) {\r",
+							"    tests['Backend is availible, responce code is 200'] = true;\r",
+							"} else if (responseCode.code === 401) {\r",
+							"    tests['Not authorized, check access token or Log in'] = false;\r",
+							"} else if (responseCode.code === 403) {\r",
+							"    tests['Forbiden'] = false;\r",
+							"} else if (responseCode.code === 404) {\r",
+							"    tests['Not found, check if you made correct request'] = false;\r",
+							"} else if (responseCode.code === 422) {\r",
+							"    tests['The instance is not valid'] = false;\r",
+							"} else {\r",
+							"    tests['Something went wrong. Check response body'] = false;\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Body's cartId match to cartId from env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.cartId).to.eql(pm.environment.get('cartId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body's storeId matches to storeId from env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.storeId).to.eql(pm.environment.get('storeId'));\r",
+							"});\r",
+							"\r",
+							"pm.test('id key in response matches id in env', function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.items[0].product.id).to.eql(pm.environment.get('Product_1_id'));\r",
+							"});\r",
+							"\r",
+							"pm.test('sku key in response matches sku in env', function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.items[0].product.sku).to.eql(pm.environment.get('sku'));\r",
+							"});\r",
+							"\r",
+							"pm.test('Body contains string id',() => {\r",
+							"    pm.expect(pm.response.text()).to.include('id');\r",
+							"})\r",
+							"\r",
+							"tests['Response code is 200 OK'] = responseCode.code === 200;\r",
+							"tests['Response time is acceptable'] = responseTime < 1000;\r",
+							"pm.test('Response assertion', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test('Response time is less than 1000ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sod8S4rgscQSXit3ocLvP8-N_Dw6vtfSwInypP1ngH8.eyJpbnN0YW5jZUlkIjoiNTQ0MjU3ODgtZjJkZC00ZmU1LTliYTQtNTA0M2FiODBjMmJmIiwiYXBwRGVmSWQiOiIxMzgwYjcwMy1jZTgxLWZmMDUtZjExNS0zOTU3MWQ5NGRmY2QiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA5LTA3VDIyOjA3OjAxLjM5N1oiLCJ1aWQiOiJhZDhkYjNiZC01NDE1LTQ2YTctODNkMS1jMWViNGFkYWE1MzMiLCJkZW1vTW9kZSI6ZmFsc2UsIm9yaWdpbkluc3RhbmNlSWQiOiI2NjExYWE0MC04YmJmLTRiNjQtODNiYS0wY2Y2MjQyY2UwMTMiLCJhaWQiOiJmOTMxNDcxZC1kZTViLTQxMzgtYmUwNy00NWJhZGIzZjQ0MGEiLCJiaVRva2VuIjoiN2NmNWM0NWUtYTZmOS0wZmJkLTFiZWQtNTIyOWU2MzBlYTkwIiwic2l0ZU93bmVySWQiOiJmOTE0ZjExYy1hYWIzLTQ1MjctOGQ0ZS1iYWI3NjIxNDNhNjAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjEtMDktMDhUMDI6MDc6MDEuMzk3WiIsImhhc1VzZXJSb2xlIjpmYWxzZX0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"query\":\"mutation addToCart($params: [AddToCartInput!]) {\\n  cart {\\n    addToCart(params: $params) {\\n      \\n  errors {\\n    code\\n    commandName\\n    message\\n    field\\n  }\\n  cart {\\n    cartId\\n    storeId\\n    buyerNote\\n    items {\\n      cartItemId\\n      convertedFormattedComparePrice\\n      convertedFormattedPrice\\n      convertedFormattedTotalPrice\\n      convertedPrices {\\n        comparePrice\\n        formattedComparePrice\\n        formattedPrice\\n        formattedTotalPrice\\n        price\\n        totalPrice\\n      }\\n      product {\\n        comparePrice\\n        convertedComparePrice\\n        convertedPrice\\n        customTextFields {\\n          title\\n          value\\n        }\\n        id\\n        productType\\n        urlPart\\n        name\\n        pageUrl\\n        price\\n        sku\\n        weight\\n        media(limit: 1) {\\n          altText\\n          mediaType\\n          url\\n          height\\n          width\\n        }\\n        digitalProductFileItems {\\n          fileType\\n        }\\n      }\\n      optionsSelectionsValues {\\n        id\\n        title\\n        value\\n      }\\n      convertedTotalPrice\\n      freeText {\\n        title\\n        value\\n      }\\n      sku\\n      quantity\\n      inventoryQuantity\\n      formattedComparePrice\\n      formattedPrice\\n      formattedTotalPrice\\n      subscriptionPlan {\\n        id\\n        name\\n        tagline\\n        frequency\\n        duration\\n      }\\n      totalPrice\\n    }\\n    subscriptionPlan {\\n      id\\n      name\\n      tagline\\n      frequency\\n      duration\\n    }\\n\\n    appliedCoupon {\\n      convertedDiscountValue\\n      code\\n      couponId\\n      couponType\\n      name\\n      discountValue\\n    }\\n    couponCalculationError\\n    totals {\\n      subTotal\\n      shipping\\n      tax\\n      total\\n      discount\\n      shippingWithoutTax\\n      giftCardAmount\\n      formattedSubTotal\\n      formattedShipping\\n      formattedTax\\n      originalTotal\\n      itemsTotal\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedTotalBeforeTax\\n      formattedTotal\\n      formattedDiscount\\n      formattedShippingWithoutTax\\n      formattedGiftCardAmount\\n      totalBeforeTax\\n    }\\n    destination {\\n      country\\n      subdivision\\n      zipCode\\n    }\\n    selectedShippingOption {\\n      id\\n    }\\n    shippingAddress {\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    billingAddress {\\n      addressLine\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    taxCalculationError\\n    taxRuleInfo {\\n      rule {\\n        applyToShipping\\n      }\\n      status\\n    }\\n    checkoutCustomField {\\n      value\\n    }\\n    convertedCurrencyFormat {\\n      code\\n    }\\n    convertedTotals {\\n      discount\\n      formattedDiscount\\n      formattedGiftCardAmount\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedShipping\\n      formattedShippingWithoutTax\\n      formattedSubTotal\\n      formattedTax\\n      formattedTotal\\n      formattedTotalBeforeTax\\n      giftCardAmount\\n      itemsTotal\\n      originalTotal\\n      shipping\\n      shippingWithoutTax\\n      subTotal\\n      tax\\n      total\\n      totalBeforeTax\\n    }\\n    currencyFormat {\\n      code\\n    }\\n    destinationCompleteness\\n    giftCard {\\n      id\\n      code\\n      errorCode\\n    }\\n    shippingRuleInfo {\\n      shippingRule {\\n        id\\n        ruleType\\n        options {\\n          convertedRate\\n          convertedFormattedRate\\n          id\\n          title\\n          rate\\n          formattedRate\\n          deliveryTime\\n          pickupInfo {\\n            address {\\n              country\\n              subdivision\\n              addressLine\\n              city\\n              zipCode\\n            }\\n            instructions\\n          }\\n        }\\n      }\\n    }\\n  }\\n      \\n    }\\n  }\\n}\\n\",\r\n   \"variables\":{\r\n      \"params\":[\r\n         {\r\n            \"productId\":\"{{Product_1_id}}\",\r\n            \"quantity\":1,\r\n            \"optionsSelectionsIds\":[\r\n               2\r\n            ],\r\n            \"optionsSelectionsByNames\":{\r\n               \"Color\":\"Brown\"\r\n            },\r\n            \"customTextFieldSelections\":[\r\n               \r\n            ]\r\n         }\r\n      ]\r\n   },\r\n   \"operationName\":\"addToCart\",\r\n   \"source\":\"WixStoresWebClient\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+					"protocol": "https",
+					"host": [
+						"qasvus",
+						"wixsite",
+						"com"
+					],
+					"path": [
+						"_api",
+						"wixstores-graphql-server",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product 1 from cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (responseCode.code === 200) {\r",
+							"    tests['Backend is availible, responce code is 200'] = true;\r",
+							"} else if (responseCode.code === 401) {\r",
+							"    tests['Not authorized, check access token or Log in'] = false;\r",
+							"} else if (responseCode.code === 403) {\r",
+							"    tests['Forbiden'] = false;\r",
+							"} else if (responseCode.code === 404) {\r",
+							"    tests['Not found, check if you made correct request'] = false;\r",
+							"} else if (responseCode.code === 422) {\r",
+							"    tests['The instance is not valid'] = false;\r",
+							"} else {\r",
+							"    tests['Something went wrong. Check response body'] = false;\r",
+							"}\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Body's cartId match to cartId from env\", function () {    \r",
+							"    pm.expect(jsonData.data.cart.removeItem.cart.cartId).to.eql(pm.environment.get('cartId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body's storeId matches to storeId from env\", function () {\r",
+							"    pm.expect(jsonData.data.cart.removeItem.cart.storeId).to.eql(pm.environment.get('storeId'));\r",
+							"});\r",
+							"\r",
+							"tests['Response code is 200 OK'] = responseCode.code === 200;\r",
+							"tests['Response time is acceptable'] = responseTime < 1000;\r",
+							"pm.test('Response assertion', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test('Response time is less than 1000ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sod8S4rgscQSXit3ocLvP8-N_Dw6vtfSwInypP1ngH8.eyJpbnN0YW5jZUlkIjoiNTQ0MjU3ODgtZjJkZC00ZmU1LTliYTQtNTA0M2FiODBjMmJmIiwiYXBwRGVmSWQiOiIxMzgwYjcwMy1jZTgxLWZmMDUtZjExNS0zOTU3MWQ5NGRmY2QiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA5LTA3VDIyOjA3OjAxLjM5N1oiLCJ1aWQiOiJhZDhkYjNiZC01NDE1LTQ2YTctODNkMS1jMWViNGFkYWE1MzMiLCJkZW1vTW9kZSI6ZmFsc2UsIm9yaWdpbkluc3RhbmNlSWQiOiI2NjExYWE0MC04YmJmLTRiNjQtODNiYS0wY2Y2MjQyY2UwMTMiLCJhaWQiOiJmOTMxNDcxZC1kZTViLTQxMzgtYmUwNy00NWJhZGIzZjQ0MGEiLCJiaVRva2VuIjoiN2NmNWM0NWUtYTZmOS0wZmJkLTFiZWQtNTIyOWU2MzBlYTkwIiwic2l0ZU93bmVySWQiOiJmOTE0ZjExYy1hYWIzLTQ1MjctOGQ0ZS1iYWI3NjIxNDNhNjAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjEtMDktMDhUMDI6MDc6MDEuMzk3WiIsImhhc1VzZXJSb2xlIjpmYWxzZX0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"mutation removeItem($params: RemoveItemInput!) {\\n  cart {\\n    removeItem(params: $params) {\\n      \\n  errors {\\n    code\\n    commandName\\n    message\\n    field\\n  }\\n  cart {\\n    cartId\\n    storeId\\n    buyerNote\\n    items {\\n      cartItemId\\n      convertedFormattedComparePrice\\n      convertedFormattedPrice\\n      convertedFormattedTotalPrice\\n      convertedPrices {\\n        comparePrice\\n        formattedComparePrice\\n        formattedPrice\\n        formattedTotalPrice\\n        price\\n        totalPrice\\n      }\\n      product {\\n        comparePrice\\n        convertedComparePrice\\n        convertedPrice\\n        customTextFields {\\n          title\\n          value\\n        }\\n        id\\n        productType\\n        urlPart\\n        name\\n        pageUrl\\n        price\\n        sku\\n        weight\\n        media(limit: 1) {\\n          altText\\n          mediaType\\n          url\\n          height\\n          width\\n        }\\n        digitalProductFileItems {\\n          fileType\\n        }\\n      }\\n      optionsSelectionsValues {\\n        id\\n        title\\n        value\\n      }\\n      convertedTotalPrice\\n      freeText {\\n        title\\n        value\\n      }\\n      sku\\n      quantity\\n      inventoryQuantity\\n      formattedComparePrice\\n      formattedPrice\\n      formattedTotalPrice\\n      subscriptionPlan {\\n        id\\n        name\\n        tagline\\n        frequency\\n        duration\\n      }\\n      totalPrice\\n    }\\n    subscriptionPlan {\\n      id\\n      name\\n      tagline\\n      frequency\\n      duration\\n    }\\n\\n    appliedCoupon {\\n      convertedDiscountValue\\n      code\\n      couponId\\n      couponType\\n      name\\n      discountValue\\n    }\\n    couponCalculationError\\n    totals {\\n      subTotal\\n      shipping\\n      tax\\n      total\\n      discount\\n      shippingWithoutTax\\n      giftCardAmount\\n      formattedSubTotal\\n      formattedShipping\\n      formattedTax\\n      originalTotal\\n      itemsTotal\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedTotalBeforeTax\\n      formattedTotal\\n      formattedDiscount\\n      formattedShippingWithoutTax\\n      formattedGiftCardAmount\\n      totalBeforeTax\\n    }\\n    destination {\\n      country\\n      subdivision\\n      zipCode\\n    }\\n    selectedShippingOption {\\n      id\\n    }\\n    shippingAddress {\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    billingAddress {\\n      addressLine\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    taxCalculationError\\n    taxRuleInfo {\\n      rule {\\n        applyToShipping\\n      }\\n      status\\n    }\\n    checkoutCustomField {\\n      value\\n    }\\n    convertedCurrencyFormat {\\n      code\\n    }\\n    convertedTotals {\\n      discount\\n      formattedDiscount\\n      formattedGiftCardAmount\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedShipping\\n      formattedShippingWithoutTax\\n      formattedSubTotal\\n      formattedTax\\n      formattedTotal\\n      formattedTotalBeforeTax\\n      giftCardAmount\\n      itemsTotal\\n      originalTotal\\n      shipping\\n      shippingWithoutTax\\n      subTotal\\n      tax\\n      total\\n      totalBeforeTax\\n    }\\n    currencyFormat {\\n      code\\n    }\\n    destinationCompleteness\\n    giftCard {\\n      id\\n      code\\n      errorCode\\n    }\\n    shippingRuleInfo {\\n      shippingRule {\\n        id\\n        ruleType\\n        options {\\n          convertedRate\\n          convertedFormattedRate\\n          id\\n          title\\n          rate\\n          formattedRate\\n          deliveryTime\\n          pickupInfo {\\n            address {\\n              country\\n              subdivision\\n              addressLine\\n              city\\n              zipCode\\n            }\\n            instructions\\n          }\\n        }\\n      }\\n    }\\n  }\\n\\n    }\\n  }\\n}\\n\",\r\n    \"variables\": {\r\n        \"params\": {\r\n            \"cartId\": \"56acdbd2-04dc-4aca-b155-e44bab0d2239\",\r\n            \"cartItemId\": 1\r\n        }\r\n    },\r\n    \"operationName\": \"removeItem\",\r\n    \"source\": \"WixStoresWebClient\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+					"protocol": "https",
+					"host": [
+						"qasvus",
+						"wixsite",
+						"com"
+					],
+					"path": [
+						"_api",
+						"wixstores-graphql-server",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add I'm a producd 2 to cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (responseCode.code === 200) {\r",
+							"    tests['Backend is availible, responce code is 200'] = true;\r",
+							"} else if (responseCode.code === 401) {\r",
+							"    tests['Not authorized, check access token or Log in'] = false;\r",
+							"} else if (responseCode.code === 403) {\r",
+							"    tests['Forbiden'] = false;\r",
+							"} else if (responseCode.code === 404) {\r",
+							"    tests['Not found, check if you made correct request'] = false;\r",
+							"} else if (responseCode.code === 422) {\r",
+							"    tests['The instance is not valid'] = false;\r",
+							"} else {\r",
+							"    tests['Something went wrong. Check response body'] = false;\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Body's cartId match to cartId from env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.cartId).to.eql(pm.environment.get('cartId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body's storeId matches to storeId from env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.storeId).to.eql(pm.environment.get('storeId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"id key in response matches id in env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.items[0].product.id).to.eql(pm.environment.get(\"I'm_a_product_2_id\"));\r",
+							"});\r",
+							"\r",
+							"pm.test('Body contains string id',() => {\r",
+							"    pm.expect(pm.response.text()).to.include('id');\r",
+							"})\r",
+							"\r",
+							"tests['Response code is 200 OK'] = responseCode.code === 200;\r",
+							"tests['Response time is acceptable'] = responseTime < 1000;\r",
+							"pm.test('Response assertion', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test('Response time is less than 1000ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sod8S4rgscQSXit3ocLvP8-N_Dw6vtfSwInypP1ngH8.eyJpbnN0YW5jZUlkIjoiNTQ0MjU3ODgtZjJkZC00ZmU1LTliYTQtNTA0M2FiODBjMmJmIiwiYXBwRGVmSWQiOiIxMzgwYjcwMy1jZTgxLWZmMDUtZjExNS0zOTU3MWQ5NGRmY2QiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA5LTA3VDIyOjA3OjAxLjM5N1oiLCJ1aWQiOiJhZDhkYjNiZC01NDE1LTQ2YTctODNkMS1jMWViNGFkYWE1MzMiLCJkZW1vTW9kZSI6ZmFsc2UsIm9yaWdpbkluc3RhbmNlSWQiOiI2NjExYWE0MC04YmJmLTRiNjQtODNiYS0wY2Y2MjQyY2UwMTMiLCJhaWQiOiJmOTMxNDcxZC1kZTViLTQxMzgtYmUwNy00NWJhZGIzZjQ0MGEiLCJiaVRva2VuIjoiN2NmNWM0NWUtYTZmOS0wZmJkLTFiZWQtNTIyOWU2MzBlYTkwIiwic2l0ZU93bmVySWQiOiJmOTE0ZjExYy1hYWIzLTQ1MjctOGQ0ZS1iYWI3NjIxNDNhNjAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjEtMDktMDhUMDI6MDc6MDEuMzk3WiIsImhhc1VzZXJSb2xlIjpmYWxzZX0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"mutation addToCart($params: [AddToCartInput!]) {\\n  cart {\\n    addToCart(params: $params) {\\n      \\n  errors {\\n    code\\n    commandName\\n    message\\n    field\\n  }\\n  cart {\\n    cartId\\n    storeId\\n    buyerNote\\n    items {\\n      cartItemId\\n      convertedFormattedComparePrice\\n      convertedFormattedPrice\\n      convertedFormattedTotalPrice\\n      convertedPrices {\\n        comparePrice\\n        formattedComparePrice\\n        formattedPrice\\n        formattedTotalPrice\\n        price\\n        totalPrice\\n      }\\n      product {\\n        comparePrice\\n        convertedComparePrice\\n        convertedPrice\\n        customTextFields {\\n          title\\n          value\\n        }\\n        id\\n        productType\\n        urlPart\\n        name\\n        pageUrl\\n        price\\n        sku\\n        weight\\n        media(limit: 1) {\\n          altText\\n          mediaType\\n          url\\n          height\\n          width\\n        }\\n        digitalProductFileItems {\\n          fileType\\n        }\\n      }\\n      optionsSelectionsValues {\\n        id\\n        title\\n        value\\n      }\\n      convertedTotalPrice\\n      freeText {\\n        title\\n        value\\n      }\\n      sku\\n      quantity\\n      inventoryQuantity\\n      formattedComparePrice\\n      formattedPrice\\n      formattedTotalPrice\\n      subscriptionPlan {\\n        id\\n        name\\n        tagline\\n        frequency\\n        duration\\n      }\\n      totalPrice\\n    }\\n    subscriptionPlan {\\n      id\\n      name\\n      tagline\\n      frequency\\n      duration\\n    }\\n\\n    appliedCoupon {\\n      convertedDiscountValue\\n      code\\n      couponId\\n      couponType\\n      name\\n      discountValue\\n    }\\n    couponCalculationError\\n    totals {\\n      subTotal\\n      shipping\\n      tax\\n      total\\n      discount\\n      shippingWithoutTax\\n      giftCardAmount\\n      formattedSubTotal\\n      formattedShipping\\n      formattedTax\\n      originalTotal\\n      itemsTotal\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedTotalBeforeTax\\n      formattedTotal\\n      formattedDiscount\\n      formattedShippingWithoutTax\\n      formattedGiftCardAmount\\n      totalBeforeTax\\n    }\\n    destination {\\n      country\\n      subdivision\\n      zipCode\\n    }\\n    selectedShippingOption {\\n      id\\n    }\\n    shippingAddress {\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    billingAddress {\\n      addressLine\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    taxCalculationError\\n    taxRuleInfo {\\n      rule {\\n        applyToShipping\\n      }\\n      status\\n    }\\n    checkoutCustomField {\\n      value\\n    }\\n    convertedCurrencyFormat {\\n      code\\n    }\\n    convertedTotals {\\n      discount\\n      formattedDiscount\\n      formattedGiftCardAmount\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedShipping\\n      formattedShippingWithoutTax\\n      formattedSubTotal\\n      formattedTax\\n      formattedTotal\\n      formattedTotalBeforeTax\\n      giftCardAmount\\n      itemsTotal\\n      originalTotal\\n      shipping\\n      shippingWithoutTax\\n      subTotal\\n      tax\\n      total\\n      totalBeforeTax\\n    }\\n    currencyFormat {\\n      code\\n    }\\n    destinationCompleteness\\n    giftCard {\\n      id\\n      code\\n      errorCode\\n    }\\n    shippingRuleInfo {\\n      shippingRule {\\n        id\\n        ruleType\\n        options {\\n          convertedRate\\n          convertedFormattedRate\\n          id\\n          title\\n          rate\\n          formattedRate\\n          deliveryTime\\n          pickupInfo {\\n            address {\\n              country\\n              subdivision\\n              addressLine\\n              city\\n              zipCode\\n            }\\n            instructions\\n          }\\n        }\\n      }\\n    }\\n  }\\n      \\n    }\\n  }\\n}\\n\",\r\n    \"variables\": {\r\n        \"params\": [\r\n            {\r\n                \"productId\": \"cd59cd36-b6d2-2cf3-9d48-81793a7bdbbd\",\r\n                \"quantity\": 1,\r\n                \"variantId\": \"00000000-0000-0000-0000-000000000000\",\r\n                \"optionsSelectionsIds\": [],\r\n                \"optionsSelectionsByNames\": {},\r\n                \"customTextFieldSelections\": []\r\n            }\r\n        ]\r\n    },\r\n    \"operationName\": \"addToCart\",\r\n    \"source\": \"WixStoresWebClient\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+					"protocol": "https",
+					"host": [
+						"qasvus",
+						"wixsite",
+						"com"
+					],
+					"path": [
+						"_api",
+						"wixstores-graphql-server",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete I'm a producd 2 from cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (responseCode.code === 200) {\r",
+							"    tests['Backend is availible, responce code is 200'] = true;\r",
+							"} else if (responseCode.code === 401) {\r",
+							"    tests['Not authorized, check access token or Log in'] = false;\r",
+							"} else if (responseCode.code === 403) {\r",
+							"    tests['Forbiden'] = false;\r",
+							"} else if (responseCode.code === 404) {\r",
+							"    tests['Not found, check if you made correct request'] = false;\r",
+							"} else if (responseCode.code === 422) {\r",
+							"    tests['The instance is not valid'] = false;\r",
+							"} else {\r",
+							"    tests['Something went wrong. Check response body'] = false;\r",
+							"}\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Body's cartId match to cartId from env\", function () {    \r",
+							"    pm.expect(jsonData.data.cart.removeItem.cart.cartId).to.eql(pm.environment.get('cartId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body's storeId matches to storeId from env\", function () {\r",
+							"    pm.expect(jsonData.data.cart.removeItem.cart.storeId).to.eql(pm.environment.get('storeId'));\r",
+							"});\r",
+							"\r",
+							"tests['Response code is 200 OK'] = responseCode.code === 200;\r",
+							"tests['Response time is acceptable'] = responseTime < 1000;\r",
+							"pm.test('Response assertion', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test('Response time is less than 1000ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sod8S4rgscQSXit3ocLvP8-N_Dw6vtfSwInypP1ngH8.eyJpbnN0YW5jZUlkIjoiNTQ0MjU3ODgtZjJkZC00ZmU1LTliYTQtNTA0M2FiODBjMmJmIiwiYXBwRGVmSWQiOiIxMzgwYjcwMy1jZTgxLWZmMDUtZjExNS0zOTU3MWQ5NGRmY2QiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA5LTA3VDIyOjA3OjAxLjM5N1oiLCJ1aWQiOiJhZDhkYjNiZC01NDE1LTQ2YTctODNkMS1jMWViNGFkYWE1MzMiLCJkZW1vTW9kZSI6ZmFsc2UsIm9yaWdpbkluc3RhbmNlSWQiOiI2NjExYWE0MC04YmJmLTRiNjQtODNiYS0wY2Y2MjQyY2UwMTMiLCJhaWQiOiJmOTMxNDcxZC1kZTViLTQxMzgtYmUwNy00NWJhZGIzZjQ0MGEiLCJiaVRva2VuIjoiN2NmNWM0NWUtYTZmOS0wZmJkLTFiZWQtNTIyOWU2MzBlYTkwIiwic2l0ZU93bmVySWQiOiJmOTE0ZjExYy1hYWIzLTQ1MjctOGQ0ZS1iYWI3NjIxNDNhNjAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjEtMDktMDhUMDI6MDc6MDEuMzk3WiIsImhhc1VzZXJSb2xlIjpmYWxzZX0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"mutation removeItem($params: RemoveItemInput!) {\\n  cart {\\n    removeItem(params: $params) {\\n      \\n  errors {\\n    code\\n    commandName\\n    message\\n    field\\n  }\\n  cart {\\n    cartId\\n    storeId\\n    buyerNote\\n    items {\\n      cartItemId\\n      convertedFormattedComparePrice\\n      convertedFormattedPrice\\n      convertedFormattedTotalPrice\\n      convertedPrices {\\n        comparePrice\\n        formattedComparePrice\\n        formattedPrice\\n        formattedTotalPrice\\n        price\\n        totalPrice\\n      }\\n      product {\\n        comparePrice\\n        convertedComparePrice\\n        convertedPrice\\n        customTextFields {\\n          title\\n          value\\n        }\\n        id\\n        productType\\n        urlPart\\n        name\\n        pageUrl\\n        price\\n        sku\\n        weight\\n        media(limit: 1) {\\n          altText\\n          mediaType\\n          url\\n          height\\n          width\\n        }\\n        digitalProductFileItems {\\n          fileType\\n        }\\n      }\\n      optionsSelectionsValues {\\n        id\\n        title\\n        value\\n      }\\n      convertedTotalPrice\\n      freeText {\\n        title\\n        value\\n      }\\n      sku\\n      quantity\\n      inventoryQuantity\\n      formattedComparePrice\\n      formattedPrice\\n      formattedTotalPrice\\n      subscriptionPlan {\\n        id\\n        name\\n        tagline\\n        frequency\\n        duration\\n      }\\n      totalPrice\\n    }\\n    subscriptionPlan {\\n      id\\n      name\\n      tagline\\n      frequency\\n      duration\\n    }\\n\\n    appliedCoupon {\\n      convertedDiscountValue\\n      code\\n      couponId\\n      couponType\\n      name\\n      discountValue\\n    }\\n    couponCalculationError\\n    totals {\\n      subTotal\\n      shipping\\n      tax\\n      total\\n      discount\\n      shippingWithoutTax\\n      giftCardAmount\\n      formattedSubTotal\\n      formattedShipping\\n      formattedTax\\n      originalTotal\\n      itemsTotal\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedTotalBeforeTax\\n      formattedTotal\\n      formattedDiscount\\n      formattedShippingWithoutTax\\n      formattedGiftCardAmount\\n      totalBeforeTax\\n    }\\n    destination {\\n      country\\n      subdivision\\n      zipCode\\n    }\\n    selectedShippingOption {\\n      id\\n    }\\n    shippingAddress {\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    billingAddress {\\n      addressLine\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    taxCalculationError\\n    taxRuleInfo {\\n      rule {\\n        applyToShipping\\n      }\\n      status\\n    }\\n    checkoutCustomField {\\n      value\\n    }\\n    convertedCurrencyFormat {\\n      code\\n    }\\n    convertedTotals {\\n      discount\\n      formattedDiscount\\n      formattedGiftCardAmount\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedShipping\\n      formattedShippingWithoutTax\\n      formattedSubTotal\\n      formattedTax\\n      formattedTotal\\n      formattedTotalBeforeTax\\n      giftCardAmount\\n      itemsTotal\\n      originalTotal\\n      shipping\\n      shippingWithoutTax\\n      subTotal\\n      tax\\n      total\\n      totalBeforeTax\\n    }\\n    currencyFormat {\\n      code\\n    }\\n    destinationCompleteness\\n    giftCard {\\n      id\\n      code\\n      errorCode\\n    }\\n    shippingRuleInfo {\\n      shippingRule {\\n        id\\n        ruleType\\n        options {\\n          convertedRate\\n          convertedFormattedRate\\n          id\\n          title\\n          rate\\n          formattedRate\\n          deliveryTime\\n          pickupInfo {\\n            address {\\n              country\\n              subdivision\\n              addressLine\\n              city\\n              zipCode\\n            }\\n            instructions\\n          }\\n        }\\n      }\\n    }\\n  }\\n\\n    }\\n  }\\n}\\n\",\r\n    \"variables\": {\r\n        \"params\": {\r\n            \"cartId\": \"56acdbd2-04dc-4aca-b155-e44bab0d2239\",\r\n            \"cartItemId\": 1\r\n        }\r\n    },\r\n    \"operationName\": \"removeItem\",\r\n    \"source\": \"WixStoresWebClient\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+					"protocol": "https",
+					"host": [
+						"qasvus",
+						"wixsite",
+						"com"
+					],
+					"path": [
+						"_api",
+						"wixstores-graphql-server",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add I'm a product 4 to cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (responseCode.code === 200) {\r",
+							"    tests['Backend is availible, responce code is 200'] = true;\r",
+							"} else if (responseCode.code === 401) {\r",
+							"    tests['Not authorized, check access token or Log in'] = false;\r",
+							"} else if (responseCode.code === 403) {\r",
+							"    tests['Forbiden'] = false;\r",
+							"} else if (responseCode.code === 404) {\r",
+							"    tests['Not found, check if you made correct request'] = false;\r",
+							"} else if (responseCode.code === 422) {\r",
+							"    tests['The instance is not valid'] = false;\r",
+							"} else {\r",
+							"    tests['Something went wrong. Check response body'] = false;\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Body's cartId match to cartId from env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.cartId).to.eql(pm.environment.get('cartId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body's storeId matches to storeId from env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.storeId).to.eql(pm.environment.get('storeId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"id key in response matches id in env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.items[0].product.id).to.eql(pm.environment.get(\"I'm_a_product_4_id\"));\r",
+							"});\r",
+							"\r",
+							"pm.test('Body contains string id',() => {\r",
+							"    pm.expect(pm.response.text()).to.include('id');\r",
+							"})\r",
+							"\r",
+							"tests['Response code is 200 OK'] = responseCode.code === 200;\r",
+							"tests['Response time is acceptable'] = responseTime < 1000;\r",
+							"pm.test('Response assertion', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test('Response time is less than 1000ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sod8S4rgscQSXit3ocLvP8-N_Dw6vtfSwInypP1ngH8.eyJpbnN0YW5jZUlkIjoiNTQ0MjU3ODgtZjJkZC00ZmU1LTliYTQtNTA0M2FiODBjMmJmIiwiYXBwRGVmSWQiOiIxMzgwYjcwMy1jZTgxLWZmMDUtZjExNS0zOTU3MWQ5NGRmY2QiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA5LTA3VDIyOjA3OjAxLjM5N1oiLCJ1aWQiOiJhZDhkYjNiZC01NDE1LTQ2YTctODNkMS1jMWViNGFkYWE1MzMiLCJkZW1vTW9kZSI6ZmFsc2UsIm9yaWdpbkluc3RhbmNlSWQiOiI2NjExYWE0MC04YmJmLTRiNjQtODNiYS0wY2Y2MjQyY2UwMTMiLCJhaWQiOiJmOTMxNDcxZC1kZTViLTQxMzgtYmUwNy00NWJhZGIzZjQ0MGEiLCJiaVRva2VuIjoiN2NmNWM0NWUtYTZmOS0wZmJkLTFiZWQtNTIyOWU2MzBlYTkwIiwic2l0ZU93bmVySWQiOiJmOTE0ZjExYy1hYWIzLTQ1MjctOGQ0ZS1iYWI3NjIxNDNhNjAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjEtMDktMDhUMDI6MDc6MDEuMzk3WiIsImhhc1VzZXJSb2xlIjpmYWxzZX0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"mutation addToCart($params: [AddToCartInput!]) {\\n  cart {\\n    addToCart(params: $params) {\\n      \\n  errors {\\n    code\\n    commandName\\n    message\\n    field\\n  }\\n  cart {\\n    cartId\\n    storeId\\n    buyerNote\\n    items {\\n      cartItemId\\n      convertedFormattedComparePrice\\n      convertedFormattedPrice\\n      convertedFormattedTotalPrice\\n      convertedPrices {\\n        comparePrice\\n        formattedComparePrice\\n        formattedPrice\\n        formattedTotalPrice\\n        price\\n        totalPrice\\n      }\\n      product {\\n        comparePrice\\n        convertedComparePrice\\n        convertedPrice\\n        customTextFields {\\n          title\\n          value\\n        }\\n        id\\n        productType\\n        urlPart\\n        name\\n        pageUrl\\n        price\\n        sku\\n        weight\\n        media(limit: 1) {\\n          altText\\n          mediaType\\n          url\\n          height\\n          width\\n        }\\n        digitalProductFileItems {\\n          fileType\\n        }\\n      }\\n      optionsSelectionsValues {\\n        id\\n        title\\n        value\\n      }\\n      convertedTotalPrice\\n      freeText {\\n        title\\n        value\\n      }\\n      sku\\n      quantity\\n      inventoryQuantity\\n      formattedComparePrice\\n      formattedPrice\\n      formattedTotalPrice\\n      subscriptionPlan {\\n        id\\n        name\\n        tagline\\n        frequency\\n        duration\\n      }\\n      totalPrice\\n    }\\n    subscriptionPlan {\\n      id\\n      name\\n      tagline\\n      frequency\\n      duration\\n    }\\n\\n    appliedCoupon {\\n      convertedDiscountValue\\n      code\\n      couponId\\n      couponType\\n      name\\n      discountValue\\n    }\\n    couponCalculationError\\n    totals {\\n      subTotal\\n      shipping\\n      tax\\n      total\\n      discount\\n      shippingWithoutTax\\n      giftCardAmount\\n      formattedSubTotal\\n      formattedShipping\\n      formattedTax\\n      originalTotal\\n      itemsTotal\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedTotalBeforeTax\\n      formattedTotal\\n      formattedDiscount\\n      formattedShippingWithoutTax\\n      formattedGiftCardAmount\\n      totalBeforeTax\\n    }\\n    destination {\\n      country\\n      subdivision\\n      zipCode\\n    }\\n    selectedShippingOption {\\n      id\\n    }\\n    shippingAddress {\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    billingAddress {\\n      addressLine\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    taxCalculationError\\n    taxRuleInfo {\\n      rule {\\n        applyToShipping\\n      }\\n      status\\n    }\\n    checkoutCustomField {\\n      value\\n    }\\n    convertedCurrencyFormat {\\n      code\\n    }\\n    convertedTotals {\\n      discount\\n      formattedDiscount\\n      formattedGiftCardAmount\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedShipping\\n      formattedShippingWithoutTax\\n      formattedSubTotal\\n      formattedTax\\n      formattedTotal\\n      formattedTotalBeforeTax\\n      giftCardAmount\\n      itemsTotal\\n      originalTotal\\n      shipping\\n      shippingWithoutTax\\n      subTotal\\n      tax\\n      total\\n      totalBeforeTax\\n    }\\n    currencyFormat {\\n      code\\n    }\\n    destinationCompleteness\\n    giftCard {\\n      id\\n      code\\n      errorCode\\n    }\\n    shippingRuleInfo {\\n      shippingRule {\\n        id\\n        ruleType\\n        options {\\n          convertedRate\\n          convertedFormattedRate\\n          id\\n          title\\n          rate\\n          formattedRate\\n          deliveryTime\\n          pickupInfo {\\n            address {\\n              country\\n              subdivision\\n              addressLine\\n              city\\n              zipCode\\n            }\\n            instructions\\n          }\\n        }\\n      }\\n    }\\n  }\\n      \\n    }\\n  }\\n}\\n\",\r\n    \"variables\": {\r\n        \"params\": [\r\n            {\r\n                \"productId\": \"c8539b66-7a44-fe18-affc-afec4be8562a\",\r\n                \"quantity\": 1,\r\n                \"optionsSelectionsIds\": [\r\n                    8,\r\n                    11\r\n                ],\r\n                \"optionsSelectionsByNames\": {\r\n                    \"Color\": \"White\",\r\n                    \"Size\": \"Medium\"\r\n                },\r\n                \"customTextFieldSelections\": []\r\n            }\r\n        ]\r\n    },\r\n    \"operationName\": \"addToCart\",\r\n    \"source\": \"WixStoresWebClient\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+					"protocol": "https",
+					"host": [
+						"qasvus",
+						"wixsite",
+						"com"
+					],
+					"path": [
+						"_api",
+						"wixstores-graphql-server",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete I'm a product 4 from cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (responseCode.code === 200) {\r",
+							"    tests['Backend is availible, responce code is 200'] = true;\r",
+							"} else if (responseCode.code === 401) {\r",
+							"    tests['Not authorized, check access token or Log in'] = false;\r",
+							"} else if (responseCode.code === 403) {\r",
+							"    tests['Forbiden'] = false;\r",
+							"} else if (responseCode.code === 404) {\r",
+							"    tests['Not found, check if you made correct request'] = false;\r",
+							"} else if (responseCode.code === 422) {\r",
+							"    tests['The instance is not valid'] = false;\r",
+							"} else {\r",
+							"    tests['Something went wrong. Check response body'] = false;\r",
+							"}\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Body's cartId match to cartId from env\", function () {    \r",
+							"    pm.expect(jsonData.data.cart.removeItem.cart.cartId).to.eql(pm.environment.get('cartId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body's storeId matches to storeId from env\", function () {\r",
+							"    pm.expect(jsonData.data.cart.removeItem.cart.storeId).to.eql(pm.environment.get('storeId'));\r",
+							"});\r",
+							"\r",
+							"tests['Response code is 200 OK'] = responseCode.code === 200;\r",
+							"tests['Response time is acceptable'] = responseTime < 1000;\r",
+							"pm.test('Response assertion', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test('Response time is less than 1000ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sod8S4rgscQSXit3ocLvP8-N_Dw6vtfSwInypP1ngH8.eyJpbnN0YW5jZUlkIjoiNTQ0MjU3ODgtZjJkZC00ZmU1LTliYTQtNTA0M2FiODBjMmJmIiwiYXBwRGVmSWQiOiIxMzgwYjcwMy1jZTgxLWZmMDUtZjExNS0zOTU3MWQ5NGRmY2QiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA5LTA3VDIyOjA3OjAxLjM5N1oiLCJ1aWQiOiJhZDhkYjNiZC01NDE1LTQ2YTctODNkMS1jMWViNGFkYWE1MzMiLCJkZW1vTW9kZSI6ZmFsc2UsIm9yaWdpbkluc3RhbmNlSWQiOiI2NjExYWE0MC04YmJmLTRiNjQtODNiYS0wY2Y2MjQyY2UwMTMiLCJhaWQiOiJmOTMxNDcxZC1kZTViLTQxMzgtYmUwNy00NWJhZGIzZjQ0MGEiLCJiaVRva2VuIjoiN2NmNWM0NWUtYTZmOS0wZmJkLTFiZWQtNTIyOWU2MzBlYTkwIiwic2l0ZU93bmVySWQiOiJmOTE0ZjExYy1hYWIzLTQ1MjctOGQ0ZS1iYWI3NjIxNDNhNjAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjEtMDktMDhUMDI6MDc6MDEuMzk3WiIsImhhc1VzZXJSb2xlIjpmYWxzZX0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"mutation removeItem($params: RemoveItemInput!) {\\n  cart {\\n    removeItem(params: $params) {\\n      \\n  errors {\\n    code\\n    commandName\\n    message\\n    field\\n  }\\n  cart {\\n    cartId\\n    storeId\\n    buyerNote\\n    items {\\n      cartItemId\\n      convertedFormattedComparePrice\\n      convertedFormattedPrice\\n      convertedFormattedTotalPrice\\n      convertedPrices {\\n        comparePrice\\n        formattedComparePrice\\n        formattedPrice\\n        formattedTotalPrice\\n        price\\n        totalPrice\\n      }\\n      product {\\n        comparePrice\\n        convertedComparePrice\\n        convertedPrice\\n        customTextFields {\\n          title\\n          value\\n        }\\n        id\\n        productType\\n        urlPart\\n        name\\n        pageUrl\\n        price\\n        sku\\n        weight\\n        media(limit: 1) {\\n          altText\\n          mediaType\\n          url\\n          height\\n          width\\n        }\\n        digitalProductFileItems {\\n          fileType\\n        }\\n      }\\n      optionsSelectionsValues {\\n        id\\n        title\\n        value\\n      }\\n      convertedTotalPrice\\n      freeText {\\n        title\\n        value\\n      }\\n      sku\\n      quantity\\n      inventoryQuantity\\n      formattedComparePrice\\n      formattedPrice\\n      formattedTotalPrice\\n      subscriptionPlan {\\n        id\\n        name\\n        tagline\\n        frequency\\n        duration\\n      }\\n      totalPrice\\n    }\\n    subscriptionPlan {\\n      id\\n      name\\n      tagline\\n      frequency\\n      duration\\n    }\\n\\n    appliedCoupon {\\n      convertedDiscountValue\\n      code\\n      couponId\\n      couponType\\n      name\\n      discountValue\\n    }\\n    couponCalculationError\\n    totals {\\n      subTotal\\n      shipping\\n      tax\\n      total\\n      discount\\n      shippingWithoutTax\\n      giftCardAmount\\n      formattedSubTotal\\n      formattedShipping\\n      formattedTax\\n      originalTotal\\n      itemsTotal\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedTotalBeforeTax\\n      formattedTotal\\n      formattedDiscount\\n      formattedShippingWithoutTax\\n      formattedGiftCardAmount\\n      totalBeforeTax\\n    }\\n    destination {\\n      country\\n      subdivision\\n      zipCode\\n    }\\n    selectedShippingOption {\\n      id\\n    }\\n    shippingAddress {\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    billingAddress {\\n      addressLine\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    taxCalculationError\\n    taxRuleInfo {\\n      rule {\\n        applyToShipping\\n      }\\n      status\\n    }\\n    checkoutCustomField {\\n      value\\n    }\\n    convertedCurrencyFormat {\\n      code\\n    }\\n    convertedTotals {\\n      discount\\n      formattedDiscount\\n      formattedGiftCardAmount\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedShipping\\n      formattedShippingWithoutTax\\n      formattedSubTotal\\n      formattedTax\\n      formattedTotal\\n      formattedTotalBeforeTax\\n      giftCardAmount\\n      itemsTotal\\n      originalTotal\\n      shipping\\n      shippingWithoutTax\\n      subTotal\\n      tax\\n      total\\n      totalBeforeTax\\n    }\\n    currencyFormat {\\n      code\\n    }\\n    destinationCompleteness\\n    giftCard {\\n      id\\n      code\\n      errorCode\\n    }\\n    shippingRuleInfo {\\n      shippingRule {\\n        id\\n        ruleType\\n        options {\\n          convertedRate\\n          convertedFormattedRate\\n          id\\n          title\\n          rate\\n          formattedRate\\n          deliveryTime\\n          pickupInfo {\\n            address {\\n              country\\n              subdivision\\n              addressLine\\n              city\\n              zipCode\\n            }\\n            instructions\\n          }\\n        }\\n      }\\n    }\\n  }\\n\\n    }\\n  }\\n}\\n\",\r\n    \"variables\": {\r\n        \"params\": {\r\n            \"cartId\": \"56acdbd2-04dc-4aca-b155-e44bab0d2239\",\r\n            \"cartItemId\": 1\r\n        }\r\n    },\r\n    \"operationName\": \"removeItem\",\r\n    \"source\": \"WixStoresWebClient\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+					"protocol": "https",
+					"host": [
+						"qasvus",
+						"wixsite",
+						"com"
+					],
+					"path": [
+						"_api",
+						"wixstores-graphql-server",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add I'm a product3 to cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (responseCode.code === 200) {\r",
+							"    tests['Backend is availible, responce code is 200'] = true;\r",
+							"} else if (responseCode.code === 401) {\r",
+							"    tests['Not authorized, check access token or Log in'] = false;\r",
+							"} else if (responseCode.code === 403) {\r",
+							"    tests['Forbiden'] = false;\r",
+							"} else if (responseCode.code === 404) {\r",
+							"    tests['Not found, check if you made correct request'] = false;\r",
+							"} else if (responseCode.code === 422) {\r",
+							"    tests['The instance is not valid'] = false;\r",
+							"} else {\r",
+							"    tests['Something went wrong. Check response body'] = false;\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Body's cartId match to cartId from env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.cartId).to.eql(pm.environment.get('cartId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body's storeId matches to storeId from env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.storeId).to.eql(pm.environment.get('storeId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"id key in response matches id in env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.items[0].product.id).to.eql(pm.environment.get(\"I'm_a_product3_id\"));\r",
+							"});\r",
+							"\r",
+							"pm.test('Body contains string id',() => {\r",
+							"    pm.expect(pm.response.text()).to.include('id');\r",
+							"})\r",
+							"\r",
+							"tests['Response code is 200 OK'] = responseCode.code === 200;\r",
+							"tests['Response time is acceptable'] = responseTime < 1000;\r",
+							"pm.test('Response assertion', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test('Response time is less than 1000ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sod8S4rgscQSXit3ocLvP8-N_Dw6vtfSwInypP1ngH8.eyJpbnN0YW5jZUlkIjoiNTQ0MjU3ODgtZjJkZC00ZmU1LTliYTQtNTA0M2FiODBjMmJmIiwiYXBwRGVmSWQiOiIxMzgwYjcwMy1jZTgxLWZmMDUtZjExNS0zOTU3MWQ5NGRmY2QiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA5LTA3VDIyOjA3OjAxLjM5N1oiLCJ1aWQiOiJhZDhkYjNiZC01NDE1LTQ2YTctODNkMS1jMWViNGFkYWE1MzMiLCJkZW1vTW9kZSI6ZmFsc2UsIm9yaWdpbkluc3RhbmNlSWQiOiI2NjExYWE0MC04YmJmLTRiNjQtODNiYS0wY2Y2MjQyY2UwMTMiLCJhaWQiOiJmOTMxNDcxZC1kZTViLTQxMzgtYmUwNy00NWJhZGIzZjQ0MGEiLCJiaVRva2VuIjoiN2NmNWM0NWUtYTZmOS0wZmJkLTFiZWQtNTIyOWU2MzBlYTkwIiwic2l0ZU93bmVySWQiOiJmOTE0ZjExYy1hYWIzLTQ1MjctOGQ0ZS1iYWI3NjIxNDNhNjAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjEtMDktMDhUMDI6MDc6MDEuMzk3WiIsImhhc1VzZXJSb2xlIjpmYWxzZX0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"mutation addToCart($params: [AddToCartInput!]) {\\n  cart {\\n    addToCart(params: $params) {\\n      \\n  errors {\\n    code\\n    commandName\\n    message\\n    field\\n  }\\n  cart {\\n    cartId\\n    storeId\\n    buyerNote\\n    items {\\n      cartItemId\\n      convertedFormattedComparePrice\\n      convertedFormattedPrice\\n      convertedFormattedTotalPrice\\n      convertedPrices {\\n        comparePrice\\n        formattedComparePrice\\n        formattedPrice\\n        formattedTotalPrice\\n        price\\n        totalPrice\\n      }\\n      product {\\n        comparePrice\\n        convertedComparePrice\\n        convertedPrice\\n        customTextFields {\\n          title\\n          value\\n        }\\n        id\\n        productType\\n        urlPart\\n        name\\n        pageUrl\\n        price\\n        sku\\n        weight\\n        media(limit: 1) {\\n          altText\\n          mediaType\\n          url\\n          height\\n          width\\n        }\\n        digitalProductFileItems {\\n          fileType\\n        }\\n      }\\n      optionsSelectionsValues {\\n        id\\n        title\\n        value\\n      }\\n      convertedTotalPrice\\n      freeText {\\n        title\\n        value\\n      }\\n      sku\\n      quantity\\n      inventoryQuantity\\n      formattedComparePrice\\n      formattedPrice\\n      formattedTotalPrice\\n      subscriptionPlan {\\n        id\\n        name\\n        tagline\\n        frequency\\n        duration\\n      }\\n      totalPrice\\n    }\\n    subscriptionPlan {\\n      id\\n      name\\n      tagline\\n      frequency\\n      duration\\n    }\\n\\n    appliedCoupon {\\n      convertedDiscountValue\\n      code\\n      couponId\\n      couponType\\n      name\\n      discountValue\\n    }\\n    couponCalculationError\\n    totals {\\n      subTotal\\n      shipping\\n      tax\\n      total\\n      discount\\n      shippingWithoutTax\\n      giftCardAmount\\n      formattedSubTotal\\n      formattedShipping\\n      formattedTax\\n      originalTotal\\n      itemsTotal\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedTotalBeforeTax\\n      formattedTotal\\n      formattedDiscount\\n      formattedShippingWithoutTax\\n      formattedGiftCardAmount\\n      totalBeforeTax\\n    }\\n    destination {\\n      country\\n      subdivision\\n      zipCode\\n    }\\n    selectedShippingOption {\\n      id\\n    }\\n    shippingAddress {\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    billingAddress {\\n      addressLine\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    taxCalculationError\\n    taxRuleInfo {\\n      rule {\\n        applyToShipping\\n      }\\n      status\\n    }\\n    checkoutCustomField {\\n      value\\n    }\\n    convertedCurrencyFormat {\\n      code\\n    }\\n    convertedTotals {\\n      discount\\n      formattedDiscount\\n      formattedGiftCardAmount\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedShipping\\n      formattedShippingWithoutTax\\n      formattedSubTotal\\n      formattedTax\\n      formattedTotal\\n      formattedTotalBeforeTax\\n      giftCardAmount\\n      itemsTotal\\n      originalTotal\\n      shipping\\n      shippingWithoutTax\\n      subTotal\\n      tax\\n      total\\n      totalBeforeTax\\n    }\\n    currencyFormat {\\n      code\\n    }\\n    destinationCompleteness\\n    giftCard {\\n      id\\n      code\\n      errorCode\\n    }\\n    shippingRuleInfo {\\n      shippingRule {\\n        id\\n        ruleType\\n        options {\\n          convertedRate\\n          convertedFormattedRate\\n          id\\n          title\\n          rate\\n          formattedRate\\n          deliveryTime\\n          pickupInfo {\\n            address {\\n              country\\n              subdivision\\n              addressLine\\n              city\\n              zipCode\\n            }\\n            instructions\\n          }\\n        }\\n      }\\n    }\\n  }\\n      \\n    }\\n  }\\n}\\n\",\r\n    \"variables\": {\r\n        \"params\": [\r\n            {\r\n                \"productId\": \"1a2d7e83-4bef-31d5-09e1-3326ee271c09\",\r\n                \"quantity\": 1,\r\n                \"optionsSelectionsIds\": [\r\n                    11,\r\n                    6\r\n                ],\r\n                \"optionsSelectionsByNames\": {\r\n                    \"Size\": \"One size\",\r\n                    \"Color\": \"Grey\"\r\n                },\r\n                \"customTextFieldSelections\": []\r\n            }\r\n        ]\r\n    },\r\n    \"operationName\": \"addToCart\",\r\n    \"source\": \"WixStoresWebClient\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+					"protocol": "https",
+					"host": [
+						"qasvus",
+						"wixsite",
+						"com"
+					],
+					"path": [
+						"_api",
+						"wixstores-graphql-server",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete I'm a product3 from cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (responseCode.code === 200) {\r",
+							"    tests['Backend is availible, responce code is 200'] = true;\r",
+							"} else if (responseCode.code === 401) {\r",
+							"    tests['Not authorized, check access token or Log in'] = false;\r",
+							"} else if (responseCode.code === 403) {\r",
+							"    tests['Forbiden'] = false;\r",
+							"} else if (responseCode.code === 404) {\r",
+							"    tests['Not found, check if you made correct request'] = false;\r",
+							"} else if (responseCode.code === 422) {\r",
+							"    tests['The instance is not valid'] = false;\r",
+							"} else {\r",
+							"    tests['Something went wrong. Check response body'] = false;\r",
+							"}\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Body's cartId match to cartId from env\", function () {    \r",
+							"    pm.expect(jsonData.data.cart.removeItem.cart.cartId).to.eql(pm.environment.get('cartId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body's storeId matches to storeId from env\", function () {\r",
+							"    pm.expect(jsonData.data.cart.removeItem.cart.storeId).to.eql(pm.environment.get('storeId'));\r",
+							"});\r",
+							"\r",
+							"tests['Response code is 200 OK'] = responseCode.code === 200;\r",
+							"tests['Response time is acceptable'] = responseTime < 1000;\r",
+							"pm.test('Response assertion', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test('Response time is less than 1000ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sod8S4rgscQSXit3ocLvP8-N_Dw6vtfSwInypP1ngH8.eyJpbnN0YW5jZUlkIjoiNTQ0MjU3ODgtZjJkZC00ZmU1LTliYTQtNTA0M2FiODBjMmJmIiwiYXBwRGVmSWQiOiIxMzgwYjcwMy1jZTgxLWZmMDUtZjExNS0zOTU3MWQ5NGRmY2QiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA5LTA3VDIyOjA3OjAxLjM5N1oiLCJ1aWQiOiJhZDhkYjNiZC01NDE1LTQ2YTctODNkMS1jMWViNGFkYWE1MzMiLCJkZW1vTW9kZSI6ZmFsc2UsIm9yaWdpbkluc3RhbmNlSWQiOiI2NjExYWE0MC04YmJmLTRiNjQtODNiYS0wY2Y2MjQyY2UwMTMiLCJhaWQiOiJmOTMxNDcxZC1kZTViLTQxMzgtYmUwNy00NWJhZGIzZjQ0MGEiLCJiaVRva2VuIjoiN2NmNWM0NWUtYTZmOS0wZmJkLTFiZWQtNTIyOWU2MzBlYTkwIiwic2l0ZU93bmVySWQiOiJmOTE0ZjExYy1hYWIzLTQ1MjctOGQ0ZS1iYWI3NjIxNDNhNjAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjEtMDktMDhUMDI6MDc6MDEuMzk3WiIsImhhc1VzZXJSb2xlIjpmYWxzZX0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"mutation removeItem($params: RemoveItemInput!) {\\n  cart {\\n    removeItem(params: $params) {\\n      \\n  errors {\\n    code\\n    commandName\\n    message\\n    field\\n  }\\n  cart {\\n    cartId\\n    storeId\\n    buyerNote\\n    items {\\n      cartItemId\\n      convertedFormattedComparePrice\\n      convertedFormattedPrice\\n      convertedFormattedTotalPrice\\n      convertedPrices {\\n        comparePrice\\n        formattedComparePrice\\n        formattedPrice\\n        formattedTotalPrice\\n        price\\n        totalPrice\\n      }\\n      product {\\n        comparePrice\\n        convertedComparePrice\\n        convertedPrice\\n        customTextFields {\\n          title\\n          value\\n        }\\n        id\\n        productType\\n        urlPart\\n        name\\n        pageUrl\\n        price\\n        sku\\n        weight\\n        media(limit: 1) {\\n          altText\\n          mediaType\\n          url\\n          height\\n          width\\n        }\\n        digitalProductFileItems {\\n          fileType\\n        }\\n      }\\n      optionsSelectionsValues {\\n        id\\n        title\\n        value\\n      }\\n      convertedTotalPrice\\n      freeText {\\n        title\\n        value\\n      }\\n      sku\\n      quantity\\n      inventoryQuantity\\n      formattedComparePrice\\n      formattedPrice\\n      formattedTotalPrice\\n      subscriptionPlan {\\n        id\\n        name\\n        tagline\\n        frequency\\n        duration\\n      }\\n      totalPrice\\n    }\\n    subscriptionPlan {\\n      id\\n      name\\n      tagline\\n      frequency\\n      duration\\n    }\\n\\n    appliedCoupon {\\n      convertedDiscountValue\\n      code\\n      couponId\\n      couponType\\n      name\\n      discountValue\\n    }\\n    couponCalculationError\\n    totals {\\n      subTotal\\n      shipping\\n      tax\\n      total\\n      discount\\n      shippingWithoutTax\\n      giftCardAmount\\n      formattedSubTotal\\n      formattedShipping\\n      formattedTax\\n      originalTotal\\n      itemsTotal\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedTotalBeforeTax\\n      formattedTotal\\n      formattedDiscount\\n      formattedShippingWithoutTax\\n      formattedGiftCardAmount\\n      totalBeforeTax\\n    }\\n    destination {\\n      country\\n      subdivision\\n      zipCode\\n    }\\n    selectedShippingOption {\\n      id\\n    }\\n    shippingAddress {\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    billingAddress {\\n      addressLine\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    taxCalculationError\\n    taxRuleInfo {\\n      rule {\\n        applyToShipping\\n      }\\n      status\\n    }\\n    checkoutCustomField {\\n      value\\n    }\\n    convertedCurrencyFormat {\\n      code\\n    }\\n    convertedTotals {\\n      discount\\n      formattedDiscount\\n      formattedGiftCardAmount\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedShipping\\n      formattedShippingWithoutTax\\n      formattedSubTotal\\n      formattedTax\\n      formattedTotal\\n      formattedTotalBeforeTax\\n      giftCardAmount\\n      itemsTotal\\n      originalTotal\\n      shipping\\n      shippingWithoutTax\\n      subTotal\\n      tax\\n      total\\n      totalBeforeTax\\n    }\\n    currencyFormat {\\n      code\\n    }\\n    destinationCompleteness\\n    giftCard {\\n      id\\n      code\\n      errorCode\\n    }\\n    shippingRuleInfo {\\n      shippingRule {\\n        id\\n        ruleType\\n        options {\\n          convertedRate\\n          convertedFormattedRate\\n          id\\n          title\\n          rate\\n          formattedRate\\n          deliveryTime\\n          pickupInfo {\\n            address {\\n              country\\n              subdivision\\n              addressLine\\n              city\\n              zipCode\\n            }\\n            instructions\\n          }\\n        }\\n      }\\n    }\\n  }\\n\\n    }\\n  }\\n}\\n\",\r\n    \"variables\": {\r\n        \"params\": {\r\n            \"cartId\": \"56acdbd2-04dc-4aca-b155-e44bab0d2239\",\r\n            \"cartItemId\": 1\r\n        }\r\n    },\r\n    \"operationName\": \"removeItem\",\r\n    \"source\": \"WixStoresWebClient\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+					"protocol": "https",
+					"host": [
+						"qasvus",
+						"wixsite",
+						"com"
+					],
+					"path": [
+						"_api",
+						"wixstores-graphql-server",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add I'm a product to cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (responseCode.code === 200) {\r",
+							"    tests['Backend is availible, responce code is 200'] = true;\r",
+							"} else if (responseCode.code === 401) {\r",
+							"    tests['Not authorized, check access token or Log in'] = false;\r",
+							"} else if (responseCode.code === 403) {\r",
+							"    tests['Forbiden'] = false;\r",
+							"} else if (responseCode.code === 404) {\r",
+							"    tests['Not found, check if you made correct request'] = false;\r",
+							"} else if (responseCode.code === 422) {\r",
+							"    tests['The instance is not valid'] = false;\r",
+							"} else {\r",
+							"    tests['Something went wrong. Check response body'] = false;\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Body's cartId match to cartId from env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.cartId).to.eql(pm.environment.get('cartId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body's storeId matches to storeId from env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.storeId).to.eql(pm.environment.get('storeId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"id key in response matches id in env\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.cart.addToCart.cart.items[0].product.id).to.eql(pm.environment.get(\"I'm_a_product_id\"));\r",
+							"});\r",
+							"\r",
+							"pm.test('Body contains string id',() => {\r",
+							"    pm.expect(pm.response.text()).to.include('id');\r",
+							"})\r",
+							"\r",
+							"tests['Response code is 200 OK'] = responseCode.code === 200;\r",
+							"tests['Response time is acceptable'] = responseTime < 1000;\r",
+							"pm.test('Response assertion', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test('Response time is less than 1000ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sod8S4rgscQSXit3ocLvP8-N_Dw6vtfSwInypP1ngH8.eyJpbnN0YW5jZUlkIjoiNTQ0MjU3ODgtZjJkZC00ZmU1LTliYTQtNTA0M2FiODBjMmJmIiwiYXBwRGVmSWQiOiIxMzgwYjcwMy1jZTgxLWZmMDUtZjExNS0zOTU3MWQ5NGRmY2QiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA5LTA3VDIyOjA3OjAxLjM5N1oiLCJ1aWQiOiJhZDhkYjNiZC01NDE1LTQ2YTctODNkMS1jMWViNGFkYWE1MzMiLCJkZW1vTW9kZSI6ZmFsc2UsIm9yaWdpbkluc3RhbmNlSWQiOiI2NjExYWE0MC04YmJmLTRiNjQtODNiYS0wY2Y2MjQyY2UwMTMiLCJhaWQiOiJmOTMxNDcxZC1kZTViLTQxMzgtYmUwNy00NWJhZGIzZjQ0MGEiLCJiaVRva2VuIjoiN2NmNWM0NWUtYTZmOS0wZmJkLTFiZWQtNTIyOWU2MzBlYTkwIiwic2l0ZU93bmVySWQiOiJmOTE0ZjExYy1hYWIzLTQ1MjctOGQ0ZS1iYWI3NjIxNDNhNjAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjEtMDktMDhUMDI6MDc6MDEuMzk3WiIsImhhc1VzZXJSb2xlIjpmYWxzZX0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"mutation addToCart($params: [AddToCartInput!]) {\\n  cart {\\n    addToCart(params: $params) {\\n      \\n  errors {\\n    code\\n    commandName\\n    message\\n    field\\n  }\\n  cart {\\n    cartId\\n    storeId\\n    buyerNote\\n    items {\\n      cartItemId\\n      convertedFormattedComparePrice\\n      convertedFormattedPrice\\n      convertedFormattedTotalPrice\\n      convertedPrices {\\n        comparePrice\\n        formattedComparePrice\\n        formattedPrice\\n        formattedTotalPrice\\n        price\\n        totalPrice\\n      }\\n      product {\\n        comparePrice\\n        convertedComparePrice\\n        convertedPrice\\n        customTextFields {\\n          title\\n          value\\n        }\\n        id\\n        productType\\n        urlPart\\n        name\\n        pageUrl\\n        price\\n        sku\\n        weight\\n        media(limit: 1) {\\n          altText\\n          mediaType\\n          url\\n          height\\n          width\\n        }\\n        digitalProductFileItems {\\n          fileType\\n        }\\n      }\\n      optionsSelectionsValues {\\n        id\\n        title\\n        value\\n      }\\n      convertedTotalPrice\\n      freeText {\\n        title\\n        value\\n      }\\n      sku\\n      quantity\\n      inventoryQuantity\\n      formattedComparePrice\\n      formattedPrice\\n      formattedTotalPrice\\n      subscriptionPlan {\\n        id\\n        name\\n        tagline\\n        frequency\\n        duration\\n      }\\n      totalPrice\\n    }\\n    subscriptionPlan {\\n      id\\n      name\\n      tagline\\n      frequency\\n      duration\\n    }\\n\\n    appliedCoupon {\\n      convertedDiscountValue\\n      code\\n      couponId\\n      couponType\\n      name\\n      discountValue\\n    }\\n    couponCalculationError\\n    totals {\\n      subTotal\\n      shipping\\n      tax\\n      total\\n      discount\\n      shippingWithoutTax\\n      giftCardAmount\\n      formattedSubTotal\\n      formattedShipping\\n      formattedTax\\n      originalTotal\\n      itemsTotal\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedTotalBeforeTax\\n      formattedTotal\\n      formattedDiscount\\n      formattedShippingWithoutTax\\n      formattedGiftCardAmount\\n      totalBeforeTax\\n    }\\n    destination {\\n      country\\n      subdivision\\n      zipCode\\n    }\\n    selectedShippingOption {\\n      id\\n    }\\n    shippingAddress {\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    billingAddress {\\n      addressLine\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    taxCalculationError\\n    taxRuleInfo {\\n      rule {\\n        applyToShipping\\n      }\\n      status\\n    }\\n    checkoutCustomField {\\n      value\\n    }\\n    convertedCurrencyFormat {\\n      code\\n    }\\n    convertedTotals {\\n      discount\\n      formattedDiscount\\n      formattedGiftCardAmount\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedShipping\\n      formattedShippingWithoutTax\\n      formattedSubTotal\\n      formattedTax\\n      formattedTotal\\n      formattedTotalBeforeTax\\n      giftCardAmount\\n      itemsTotal\\n      originalTotal\\n      shipping\\n      shippingWithoutTax\\n      subTotal\\n      tax\\n      total\\n      totalBeforeTax\\n    }\\n    currencyFormat {\\n      code\\n    }\\n    destinationCompleteness\\n    giftCard {\\n      id\\n      code\\n      errorCode\\n    }\\n    shippingRuleInfo {\\n      shippingRule {\\n        id\\n        ruleType\\n        options {\\n          convertedRate\\n          convertedFormattedRate\\n          id\\n          title\\n          rate\\n          formattedRate\\n          deliveryTime\\n          pickupInfo {\\n            address {\\n              country\\n              subdivision\\n              addressLine\\n              city\\n              zipCode\\n            }\\n            instructions\\n          }\\n        }\\n      }\\n    }\\n  }\\n      \\n    }\\n  }\\n}\\n\",\r\n    \"variables\": {\r\n        \"params\": [\r\n            {\r\n                \"productId\": \"d99d3cc8-bc75-ec47-6c72-f713016f98f3\",\r\n                \"quantity\": 1,\r\n                \"optionsSelectionsIds\": [\r\n                    2\r\n                ],\r\n                \"optionsSelectionsByNames\": {\r\n                    \"Size\": \"Large\"\r\n                },\r\n                \"customTextFieldSelections\": []\r\n            }\r\n        ]\r\n    },\r\n    \"operationName\": \"addToCart\",\r\n    \"source\": \"WixStoresWebClient\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+					"protocol": "https",
+					"host": [
+						"qasvus",
+						"wixsite",
+						"com"
+					],
+					"path": [
+						"_api",
+						"wixstores-graphql-server",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete I'm a product from cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (responseCode.code === 200) {\r",
+							"    tests['Backend is availible, responce code is 200'] = true;\r",
+							"} else if (responseCode.code === 401) {\r",
+							"    tests['Not authorized, check access token or Log in'] = false;\r",
+							"} else if (responseCode.code === 403) {\r",
+							"    tests['Forbiden'] = false;\r",
+							"} else if (responseCode.code === 404) {\r",
+							"    tests['Not found, check if you made correct request'] = false;\r",
+							"} else if (responseCode.code === 422) {\r",
+							"    tests['The instance is not valid'] = false;\r",
+							"} else {\r",
+							"    tests['Something went wrong. Check response body'] = false;\r",
+							"}\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Body's cartId match to cartId from env\", function () {    \r",
+							"    pm.expect(jsonData.data.cart.removeItem.cart.cartId).to.eql(pm.environment.get('cartId'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body's storeId matches to storeId from env\", function () {\r",
+							"    pm.expect(jsonData.data.cart.removeItem.cart.storeId).to.eql(pm.environment.get('storeId'));\r",
+							"});\r",
+							"\r",
+							"tests['Response code is 200 OK'] = responseCode.code === 200;\r",
+							"tests['Response time is acceptable'] = responseTime < 1000;\r",
+							"pm.test('Response assertion', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test('Response time is less than 1000ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sod8S4rgscQSXit3ocLvP8-N_Dw6vtfSwInypP1ngH8.eyJpbnN0YW5jZUlkIjoiNTQ0MjU3ODgtZjJkZC00ZmU1LTliYTQtNTA0M2FiODBjMmJmIiwiYXBwRGVmSWQiOiIxMzgwYjcwMy1jZTgxLWZmMDUtZjExNS0zOTU3MWQ5NGRmY2QiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIxLTA5LTA3VDIyOjA3OjAxLjM5N1oiLCJ1aWQiOiJhZDhkYjNiZC01NDE1LTQ2YTctODNkMS1jMWViNGFkYWE1MzMiLCJkZW1vTW9kZSI6ZmFsc2UsIm9yaWdpbkluc3RhbmNlSWQiOiI2NjExYWE0MC04YmJmLTRiNjQtODNiYS0wY2Y2MjQyY2UwMTMiLCJhaWQiOiJmOTMxNDcxZC1kZTViLTQxMzgtYmUwNy00NWJhZGIzZjQ0MGEiLCJiaVRva2VuIjoiN2NmNWM0NWUtYTZmOS0wZmJkLTFiZWQtNTIyOWU2MzBlYTkwIiwic2l0ZU93bmVySWQiOiJmOTE0ZjExYy1hYWIzLTQ1MjctOGQ0ZS1iYWI3NjIxNDNhNjAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjEtMDktMDhUMDI6MDc6MDEuMzk3WiIsImhhc1VzZXJSb2xlIjpmYWxzZX0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"mutation removeItem($params: RemoveItemInput!) {\\n  cart {\\n    removeItem(params: $params) {\\n      \\n  errors {\\n    code\\n    commandName\\n    message\\n    field\\n  }\\n  cart {\\n    cartId\\n    storeId\\n    buyerNote\\n    items {\\n      cartItemId\\n      convertedFormattedComparePrice\\n      convertedFormattedPrice\\n      convertedFormattedTotalPrice\\n      convertedPrices {\\n        comparePrice\\n        formattedComparePrice\\n        formattedPrice\\n        formattedTotalPrice\\n        price\\n        totalPrice\\n      }\\n      product {\\n        comparePrice\\n        convertedComparePrice\\n        convertedPrice\\n        customTextFields {\\n          title\\n          value\\n        }\\n        id\\n        productType\\n        urlPart\\n        name\\n        pageUrl\\n        price\\n        sku\\n        weight\\n        media(limit: 1) {\\n          altText\\n          mediaType\\n          url\\n          height\\n          width\\n        }\\n        digitalProductFileItems {\\n          fileType\\n        }\\n      }\\n      optionsSelectionsValues {\\n        id\\n        title\\n        value\\n      }\\n      convertedTotalPrice\\n      freeText {\\n        title\\n        value\\n      }\\n      sku\\n      quantity\\n      inventoryQuantity\\n      formattedComparePrice\\n      formattedPrice\\n      formattedTotalPrice\\n      subscriptionPlan {\\n        id\\n        name\\n        tagline\\n        frequency\\n        duration\\n      }\\n      totalPrice\\n    }\\n    subscriptionPlan {\\n      id\\n      name\\n      tagline\\n      frequency\\n      duration\\n    }\\n\\n    appliedCoupon {\\n      convertedDiscountValue\\n      code\\n      couponId\\n      couponType\\n      name\\n      discountValue\\n    }\\n    couponCalculationError\\n    totals {\\n      subTotal\\n      shipping\\n      tax\\n      total\\n      discount\\n      shippingWithoutTax\\n      giftCardAmount\\n      formattedSubTotal\\n      formattedShipping\\n      formattedTax\\n      originalTotal\\n      itemsTotal\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedTotalBeforeTax\\n      formattedTotal\\n      formattedDiscount\\n      formattedShippingWithoutTax\\n      formattedGiftCardAmount\\n      totalBeforeTax\\n    }\\n    destination {\\n      country\\n      subdivision\\n      zipCode\\n    }\\n    selectedShippingOption {\\n      id\\n    }\\n    shippingAddress {\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    billingAddress {\\n      addressLine\\n      email\\n      firstName\\n      lastName\\n      fullName\\n      addressLine1\\n      addressLine2\\n      street {\\n        name\\n        number\\n      }\\n      city\\n      company\\n      country\\n      subdivision\\n      zipCode\\n      phoneNumber\\n      taxInfo {\\n        taxId\\n        taxType\\n      }\\n      addressesServiceId\\n    }\\n    taxCalculationError\\n    taxRuleInfo {\\n      rule {\\n        applyToShipping\\n      }\\n      status\\n    }\\n    checkoutCustomField {\\n      value\\n    }\\n    convertedCurrencyFormat {\\n      code\\n    }\\n    convertedTotals {\\n      discount\\n      formattedDiscount\\n      formattedGiftCardAmount\\n      formattedItemsTotal\\n      formattedOriginalTotal\\n      formattedShipping\\n      formattedShippingWithoutTax\\n      formattedSubTotal\\n      formattedTax\\n      formattedTotal\\n      formattedTotalBeforeTax\\n      giftCardAmount\\n      itemsTotal\\n      originalTotal\\n      shipping\\n      shippingWithoutTax\\n      subTotal\\n      tax\\n      total\\n      totalBeforeTax\\n    }\\n    currencyFormat {\\n      code\\n    }\\n    destinationCompleteness\\n    giftCard {\\n      id\\n      code\\n      errorCode\\n    }\\n    shippingRuleInfo {\\n      shippingRule {\\n        id\\n        ruleType\\n        options {\\n          convertedRate\\n          convertedFormattedRate\\n          id\\n          title\\n          rate\\n          formattedRate\\n          deliveryTime\\n          pickupInfo {\\n            address {\\n              country\\n              subdivision\\n              addressLine\\n              city\\n              zipCode\\n            }\\n            instructions\\n          }\\n        }\\n      }\\n    }\\n  }\\n\\n    }\\n  }\\n}\\n\",\r\n    \"variables\": {\r\n        \"params\": {\r\n            \"cartId\": \"56acdbd2-04dc-4aca-b155-e44bab0d2239\",\r\n            \"cartItemId\": 1\r\n        }\r\n    },\r\n    \"operationName\": \"removeItem\",\r\n    \"source\": \"WixStoresWebClient\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+					"protocol": "https",
+					"host": [
+						"qasvus",
+						"wixsite",
+						"com"
+					],
+					"path": [
+						"_api",
+						"wixstores-graphql-server",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "qva@qva.com",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "123456Qa",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

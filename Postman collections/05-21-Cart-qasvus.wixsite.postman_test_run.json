@@ -1,0 +1,754 @@
+{
+	"id": "4b6220e1-2f13-4497-bebd-51a3915e6c95",
+	"name": "05-21-Cart-qasvus.wixsite",
+	"timestamp": "2021-09-08T01:23:25.405Z",
+	"collection_id": "16596617-2a70cfa0-97ad-4454-bde1-c5f1b9132133",
+	"folder_id": 0,
+	"environment_id": "7053bd21-2298-4de2-a63b-e4f13e09bb64",
+	"totalPass": 81,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "ae03c6f3-8860-4053-a7e1-88943c3ea704",
+			"name": "Add Product 1 to cart",
+			"url": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+			"time": 899,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Body's cartId match to cartId from env": true,
+				"Body's storeId matches to storeId from env": true,
+				"id key in response matches id in env": true,
+				"sku key in response matches sku in env": true,
+				"Body contains string id": true,
+				"Response assertion": true,
+				"Response time is less than 1000ms": true,
+				"Backend is availible, responce code is 200": true,
+				"Response code is 200 OK": true,
+				"Response time is acceptable": true
+			},
+			"testPassFailCounts": {
+				"Body's cartId match to cartId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body's storeId matches to storeId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id key in response matches id in env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"sku key in response matches sku in env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains string id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response assertion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Backend is availible, responce code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response code is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				899
+			],
+			"allTests": [
+				{
+					"Body's cartId match to cartId from env": true,
+					"Body's storeId matches to storeId from env": true,
+					"id key in response matches id in env": true,
+					"sku key in response matches sku in env": true,
+					"Body contains string id": true,
+					"Response assertion": true,
+					"Response time is less than 1000ms": true,
+					"Backend is availible, responce code is 200": true,
+					"Response code is 200 OK": true,
+					"Response time is acceptable": true
+				}
+			]
+		},
+		{
+			"id": "15c1ffd9-88b4-495d-93fc-b701cb9a0163",
+			"name": "Delete Product 1 from cart",
+			"url": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+			"time": 386,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Body's cartId match to cartId from env": true,
+				"Body's storeId matches to storeId from env": true,
+				"Response assertion": true,
+				"Response time is less than 1000ms": true,
+				"Backend is availible, responce code is 200": true,
+				"Response code is 200 OK": true,
+				"Response time is acceptable": true
+			},
+			"testPassFailCounts": {
+				"Body's cartId match to cartId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body's storeId matches to storeId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response assertion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Backend is availible, responce code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response code is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				386
+			],
+			"allTests": [
+				{
+					"Body's cartId match to cartId from env": true,
+					"Body's storeId matches to storeId from env": true,
+					"Response assertion": true,
+					"Response time is less than 1000ms": true,
+					"Backend is availible, responce code is 200": true,
+					"Response code is 200 OK": true,
+					"Response time is acceptable": true
+				}
+			]
+		},
+		{
+			"id": "04bcb729-541e-4ec3-8708-20b6bcbeda81",
+			"name": "Add I'm a producd 2 to cart",
+			"url": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+			"time": 947,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Body's cartId match to cartId from env": true,
+				"Body's storeId matches to storeId from env": true,
+				"id key in response matches id in env": true,
+				"Body contains string id": true,
+				"Response assertion": true,
+				"Response time is less than 1000ms": true,
+				"Backend is availible, responce code is 200": true,
+				"Response code is 200 OK": true,
+				"Response time is acceptable": true
+			},
+			"testPassFailCounts": {
+				"Body's cartId match to cartId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body's storeId matches to storeId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id key in response matches id in env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains string id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response assertion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Backend is availible, responce code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response code is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				947
+			],
+			"allTests": [
+				{
+					"Body's cartId match to cartId from env": true,
+					"Body's storeId matches to storeId from env": true,
+					"id key in response matches id in env": true,
+					"Body contains string id": true,
+					"Response assertion": true,
+					"Response time is less than 1000ms": true,
+					"Backend is availible, responce code is 200": true,
+					"Response code is 200 OK": true,
+					"Response time is acceptable": true
+				}
+			]
+		},
+		{
+			"id": "e6333fc7-24c1-4936-9056-94ad661c95ba",
+			"name": "Delete I'm a producd 2 from cart",
+			"url": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+			"time": 363,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Body's cartId match to cartId from env": true,
+				"Body's storeId matches to storeId from env": true,
+				"Response assertion": true,
+				"Response time is less than 1000ms": true,
+				"Backend is availible, responce code is 200": true,
+				"Response code is 200 OK": true,
+				"Response time is acceptable": true
+			},
+			"testPassFailCounts": {
+				"Body's cartId match to cartId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body's storeId matches to storeId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response assertion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Backend is availible, responce code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response code is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				363
+			],
+			"allTests": [
+				{
+					"Body's cartId match to cartId from env": true,
+					"Body's storeId matches to storeId from env": true,
+					"Response assertion": true,
+					"Response time is less than 1000ms": true,
+					"Backend is availible, responce code is 200": true,
+					"Response code is 200 OK": true,
+					"Response time is acceptable": true
+				}
+			]
+		},
+		{
+			"id": "9d74eb93-38cc-47d6-acd9-7a4f11a928d4",
+			"name": "Add I'm a product 4 to cart",
+			"url": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+			"time": 698,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Body's cartId match to cartId from env": true,
+				"Body's storeId matches to storeId from env": true,
+				"id key in response matches id in env": true,
+				"Body contains string id": true,
+				"Response assertion": true,
+				"Response time is less than 1000ms": true,
+				"Backend is availible, responce code is 200": true,
+				"Response code is 200 OK": true,
+				"Response time is acceptable": true
+			},
+			"testPassFailCounts": {
+				"Body's cartId match to cartId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body's storeId matches to storeId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id key in response matches id in env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains string id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response assertion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Backend is availible, responce code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response code is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				698
+			],
+			"allTests": [
+				{
+					"Body's cartId match to cartId from env": true,
+					"Body's storeId matches to storeId from env": true,
+					"id key in response matches id in env": true,
+					"Body contains string id": true,
+					"Response assertion": true,
+					"Response time is less than 1000ms": true,
+					"Backend is availible, responce code is 200": true,
+					"Response code is 200 OK": true,
+					"Response time is acceptable": true
+				}
+			]
+		},
+		{
+			"id": "3e49717e-7fde-42ab-b602-fd178895c81e",
+			"name": "Delete I'm a product 4 from cart",
+			"url": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+			"time": 408,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Body's cartId match to cartId from env": true,
+				"Body's storeId matches to storeId from env": true,
+				"Response assertion": true,
+				"Response time is less than 1000ms": true,
+				"Backend is availible, responce code is 200": true,
+				"Response code is 200 OK": true,
+				"Response time is acceptable": true
+			},
+			"testPassFailCounts": {
+				"Body's cartId match to cartId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body's storeId matches to storeId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response assertion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Backend is availible, responce code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response code is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				408
+			],
+			"allTests": [
+				{
+					"Body's cartId match to cartId from env": true,
+					"Body's storeId matches to storeId from env": true,
+					"Response assertion": true,
+					"Response time is less than 1000ms": true,
+					"Backend is availible, responce code is 200": true,
+					"Response code is 200 OK": true,
+					"Response time is acceptable": true
+				}
+			]
+		},
+		{
+			"id": "af438e47-bc2a-4b1f-b38d-29ca8a23a518",
+			"name": "Add I'm a product3 to cart",
+			"url": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+			"time": 762,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Body's cartId match to cartId from env": true,
+				"Body's storeId matches to storeId from env": true,
+				"id key in response matches id in env": true,
+				"Body contains string id": true,
+				"Response assertion": true,
+				"Response time is less than 1000ms": true,
+				"Backend is availible, responce code is 200": true,
+				"Response code is 200 OK": true,
+				"Response time is acceptable": true
+			},
+			"testPassFailCounts": {
+				"Body's cartId match to cartId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body's storeId matches to storeId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id key in response matches id in env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains string id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response assertion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Backend is availible, responce code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response code is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				762
+			],
+			"allTests": [
+				{
+					"Body's cartId match to cartId from env": true,
+					"Body's storeId matches to storeId from env": true,
+					"id key in response matches id in env": true,
+					"Body contains string id": true,
+					"Response assertion": true,
+					"Response time is less than 1000ms": true,
+					"Backend is availible, responce code is 200": true,
+					"Response code is 200 OK": true,
+					"Response time is acceptable": true
+				}
+			]
+		},
+		{
+			"id": "029b1a24-82a5-49ad-a3a9-1e2be3647b9c",
+			"name": "Delete I'm a product3 from cart",
+			"url": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+			"time": 330,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Body's cartId match to cartId from env": true,
+				"Body's storeId matches to storeId from env": true,
+				"Response assertion": true,
+				"Response time is less than 1000ms": true,
+				"Backend is availible, responce code is 200": true,
+				"Response code is 200 OK": true,
+				"Response time is acceptable": true
+			},
+			"testPassFailCounts": {
+				"Body's cartId match to cartId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body's storeId matches to storeId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response assertion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Backend is availible, responce code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response code is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				330
+			],
+			"allTests": [
+				{
+					"Body's cartId match to cartId from env": true,
+					"Body's storeId matches to storeId from env": true,
+					"Response assertion": true,
+					"Response time is less than 1000ms": true,
+					"Backend is availible, responce code is 200": true,
+					"Response code is 200 OK": true,
+					"Response time is acceptable": true
+				}
+			]
+		},
+		{
+			"id": "c832bb80-90b8-40de-9801-64e9f73e2ecb",
+			"name": "Add I'm a product to cart",
+			"url": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+			"time": 710,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Body's cartId match to cartId from env": true,
+				"Body's storeId matches to storeId from env": true,
+				"id key in response matches id in env": true,
+				"Body contains string id": true,
+				"Response assertion": true,
+				"Response time is less than 1000ms": true,
+				"Backend is availible, responce code is 200": true,
+				"Response code is 200 OK": true,
+				"Response time is acceptable": true
+			},
+			"testPassFailCounts": {
+				"Body's cartId match to cartId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body's storeId matches to storeId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id key in response matches id in env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains string id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response assertion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Backend is availible, responce code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response code is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				710
+			],
+			"allTests": [
+				{
+					"Body's cartId match to cartId from env": true,
+					"Body's storeId matches to storeId from env": true,
+					"id key in response matches id in env": true,
+					"Body contains string id": true,
+					"Response assertion": true,
+					"Response time is less than 1000ms": true,
+					"Backend is availible, responce code is 200": true,
+					"Response code is 200 OK": true,
+					"Response time is acceptable": true
+				}
+			]
+		},
+		{
+			"id": "50ea8677-7718-48c5-ba5f-4c4c63543a1a",
+			"name": "Delete I'm a product from cart",
+			"url": "https://qasvus.wixsite.com/_api/wixstores-graphql-server/graphql",
+			"time": 332,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Body's cartId match to cartId from env": true,
+				"Body's storeId matches to storeId from env": true,
+				"Response assertion": true,
+				"Response time is less than 1000ms": true,
+				"Backend is availible, responce code is 200": true,
+				"Response code is 200 OK": true,
+				"Response time is acceptable": true
+			},
+			"testPassFailCounts": {
+				"Body's cartId match to cartId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body's storeId matches to storeId from env": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response assertion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Backend is availible, responce code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response code is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				332
+			],
+			"allTests": [
+				{
+					"Body's cartId match to cartId from env": true,
+					"Body's storeId matches to storeId from env": true,
+					"Response assertion": true,
+					"Response time is less than 1000ms": true,
+					"Backend is availible, responce code is 200": true,
+					"Response code is 200 OK": true,
+					"Response time is acceptable": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 5835,
+	"collection": {
+		"requests": [
+			{
+				"id": "ae03c6f3-8860-4053-a7e1-88943c3ea704",
+				"method": "POST"
+			},
+			{
+				"id": "15c1ffd9-88b4-495d-93fc-b701cb9a0163",
+				"method": "DELETE"
+			},
+			{
+				"id": "04bcb729-541e-4ec3-8708-20b6bcbeda81",
+				"method": "POST"
+			},
+			{
+				"id": "e6333fc7-24c1-4936-9056-94ad661c95ba",
+				"method": "DELETE"
+			},
+			{
+				"id": "9d74eb93-38cc-47d6-acd9-7a4f11a928d4",
+				"method": "POST"
+			},
+			{
+				"id": "3e49717e-7fde-42ab-b602-fd178895c81e",
+				"method": "DELETE"
+			},
+			{
+				"id": "af438e47-bc2a-4b1f-b38d-29ca8a23a518",
+				"method": "POST"
+			},
+			{
+				"id": "029b1a24-82a5-49ad-a3a9-1e2be3647b9c",
+				"method": "DELETE"
+			},
+			{
+				"id": "c832bb80-90b8-40de-9801-64e9f73e2ecb",
+				"method": "POST"
+			},
+			{
+				"id": "50ea8677-7718-48c5-ba5f-4c4c63543a1a",
+				"method": "DELETE"
+			}
+		]
+	}
+}
